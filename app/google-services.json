@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "83485799871",
+    "project_id": "eda-logs-24215",
+    "storage_bucket": "eda-logs-24215.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83485799871:android:003aa56aab384525289d0a",
+        "android_client_info": {
+          "package_name": "com.example.eda"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMxQ_yzp71Xgnf74mZwJ-1C2yAU2dqSOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
