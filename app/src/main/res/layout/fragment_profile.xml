@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:onClick="onClick"
 
-        android:text="Выйти из аккаунта" />
+        android:text="Выйти" />
 
 
 </LinearLayout>

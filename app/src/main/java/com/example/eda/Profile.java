@@ -1,5 +1,7 @@
 package com.example.eda;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -52,9 +54,26 @@ public class Profile extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), Login.class);
-                startActivity(intent);
+                AlertDialog.Builder a_builder = new AlertDialog.Builder(getActivity());
+                a_builder.setMessage("Вы уверены что хотите выйти из аккаунта?")
+                                .setCancelable(false)
+                                        .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                FirebaseAuth.getInstance().signOut();
+                                                Intent intent = new Intent(getActivity(), Login.class);
+                                                startActivity(intent);
+                                            }
+                                        })
+                        .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+                AlertDialog alert = a_builder.create();
+                alert.setTitle("Выход из аккаунта");
+                alert.show();
             }
         });
     }
