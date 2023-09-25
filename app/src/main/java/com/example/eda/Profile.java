@@ -24,6 +24,13 @@ public class Profile extends Fragment {
     Button logout;
     TextView user_name;
     FirebaseUser user;
+    public void onStart() {
+        super.onStart();
+        if (user == null){
+            Intent intent = new Intent(getActivity(), Login.class);
+            startActivity(intent);
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
