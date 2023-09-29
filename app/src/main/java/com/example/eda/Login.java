@@ -81,7 +81,7 @@ public class Login extends AppCompatActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    Toast.makeText(Login.this, "Authentication failed.",
+                                    Toast.makeText(Login.this, "Неверный логин или пароль.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }

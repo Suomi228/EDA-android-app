@@ -73,6 +73,11 @@ public class Registration extends AppCompatActivity {
                     progress_bar.setVisibility(View.GONE);
                     return;
                 }
+                else if (password.length()<8){
+                    Toast.makeText(Registration.this,"Минимальная длина пароля 8!",Toast.LENGTH_SHORT).show();
+                    progress_bar.setVisibility(View.GONE);
+                    return;
+                }
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
