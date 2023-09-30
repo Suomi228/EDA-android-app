@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class Profile extends Fragment {
+public class ProfileFragment extends Fragment {
     FirebaseAuth auth;
     Button logout;
     TextView user_name;
