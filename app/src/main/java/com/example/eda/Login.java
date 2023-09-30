@@ -1,11 +1,14 @@
 package com.example.eda;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -24,7 +27,7 @@ public class Login extends AppCompatActivity {
     Button button_log;
     FirebaseAuth mAuth;
     ProgressBar progress_bar;
-    TextView text_view;
+    TextView text_view,password_forgot;
     @Override
     public void onStart() {
         super.onStart();
@@ -46,6 +49,7 @@ public class Login extends AppCompatActivity {
         edit_text_password = findViewById(R.id.password);
         button_log = findViewById(R.id.btn_login);
         progress_bar = findViewById(R.id.progress_bar);
+        password_forgot = findViewById(R.id.forgot_password);
 
         text_view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +90,50 @@ public class Login extends AppCompatActivity {
                                 }
                             }
                         });
+            }
+        });
+        password_forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
+                View dialog_view = getLayoutInflater().inflate(R.layout.dialog_forgot,null);
+                TextInputEditText email_forgot = dialog_view.findViewById(R.id.email_forgot);
+                builder.setView(dialog_view);
+                AlertDialog dialog = builder.create();
+
+                dialog_view.findViewById(R.id.btn_reset).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String user_email = email_forgot.getText().toString();
+                        if (TextUtils.isEmpty(user_email) && !Patterns.EMAIL_ADDRESS.matcher(user_email).matches()){
+                            Toast.makeText(Login.this,"Все поля должны быть заполнены!",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        mAuth.sendPasswordResetEmail(user_email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(Login.this,"На вашу почту пришло письмо!",Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
+                                }
+                                else{
+                                    Toast.makeText(Login.this,"Что-то пошло не так.",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+                    }
+                });
+                dialog_view.findViewById(R.id.btn_cancel).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                if (dialog.getWindow()!=null){
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                dialog.show();
             }
         });
     }
