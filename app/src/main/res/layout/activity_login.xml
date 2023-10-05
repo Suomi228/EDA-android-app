@@ -10,6 +10,8 @@
     tools:context=".Login">
     <TextView
         android:text="Авторизация"
+
+
         android:textSize="25sp"
         android:textStyle="bold"
         android:gravity="center"
