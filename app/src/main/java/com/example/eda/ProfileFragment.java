@@ -70,6 +70,7 @@ public class ProfileFragment extends Fragment {
                                                 FirebaseAuth.getInstance().signOut();
                                                 Intent intent = new Intent(getActivity(), Login.class);
                                                 startActivity(intent);
+                                                getActivity().finish();
                                             }
                                         })
                         .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
@@ -84,4 +85,5 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
 }

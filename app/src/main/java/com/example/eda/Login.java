@@ -29,14 +29,14 @@ public class Login extends AppCompatActivity {
     ProgressBar progress_bar;
     TextView text_view,password_forgot;
     @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        public void onStart() {
+            super.onStart();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            if((currentUser != null) && currentUser.isEmailVerified()){
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
     }
 
     @Override
@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progress_bar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
+                                if (task.isSuccessful() && mAuth.getCurrentUser().isEmailVerified()) {
                                     Toast.makeText(Login.this, "С возвращением!",
                                             Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);

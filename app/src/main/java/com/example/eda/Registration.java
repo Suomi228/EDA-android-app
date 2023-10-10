@@ -26,16 +26,6 @@ public class Registration extends AppCompatActivity {
     ProgressBar progress_bar;
     TextView text_view;
     @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
@@ -84,18 +74,29 @@ public class Registration extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progress_bar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(Registration.this, "Аккаунт создан.",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                                    startActivity(intent);
-                                    finish();
+                                    mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()){
+
+                                                Toast.makeText(Registration.this, "Аккаунт создан, пожалуйста подтвердите почту.",
+                                                        Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(getApplicationContext(), Login.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                            else{
+                                                Toast.makeText(Registration.this, "Что-то пошло не так.",
+                                                        Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
                                 } else {
                                     Toast.makeText(Registration.this, "Что-то пошло не так.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
-
             }
         });
 
