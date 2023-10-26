@@ -1,87 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@drawable/background_enter"
     android:gravity="center"
+    android:orientation="vertical"
+    android:outlineSpotShadowColor="@color/black"
     android:padding="15dp"
     tools:context=".Login">
+
     <TextView
-        android:text="Регистрация"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="Регистрация"
+        android:textSize="25sp"
+        android:textStyle="bold"
+
 
         />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:textSize="20dp"
-            android:layout_height="wrap_content"
             android:id="@+id/email"
-            android:hint="Введите почту"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            />
+            android:fontFamily="@font/lora"
+            android:hint="Введите почту"
+            android:textSize="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:endIconMode="password_toggle">
+
         <com.google.android.material.textfield.TextInputEditText
-            android:inputType="textPassword"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
-            android:textSize="20dp"
-            android:hint="Введите пароль"
             android:layout_marginBottom="15dp"
-            />
+            android:fontFamily="@font/lora"
+            android:hint="Введите пароль"
+            android:inputType="textPassword"
+            android:textSize="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:endIconMode="password_toggle">
+
         <com.google.android.material.textfield.TextInputEditText
-            android:inputType="textPassword"
+            android:id="@+id/password_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password_confirm"
-            android:textSize="20dp"
-            android:hint="Подтвердите пароль "
             android:layout_marginBottom="15dp"
-            />
+            android:fontFamily="@font/lora"
+            android:hint="Подтвердите пароль "
+            android:inputType="textPassword"
+            android:textSize="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar"
-        android:visibility="gone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
     <Button
         android:id="@+id/btn_register"
-        android:text="Зарегистрироваться"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lora"
+        android:text="Зарегистрироваться" />
 
     <TextView
         android:id="@+id/loginNow"
         android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/lora"
         android:gravity="center"
         android:text="Уже есть аккаунт?"
         android:textSize="20sp"
         android:textStyle="bold" />
-
 
 
 </LinearLayout>
