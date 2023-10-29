@@ -36,6 +36,7 @@ public class Registration extends AppCompatActivity {
         edit_text_confirm = findViewById(R.id.password_confirm);
         progress_bar = findViewById(R.id.progress_bar);
         text_view = findViewById(R.id.loginNow);
+
         text_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
