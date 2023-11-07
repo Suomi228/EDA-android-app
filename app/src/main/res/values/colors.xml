@@ -3,4 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FF5722</color>
+    <color name="startColor">#FFE96C2D</color>
+    <color name="centerColor">#FFF18B4E</color>
+    <color name="endColor">#FFF6AB73</color>
+    <color name="orange_color">#E96C2D</color>
+    <color name="gray">#8F8F8F</color>
 </resources>

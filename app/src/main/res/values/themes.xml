@@ -3,10 +3,12 @@
     <style name="Base.Theme.EDA" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:statusBarColor">@color/orange</item>
+
+        <item name="android:statusBarColor">@color/orange_color</item>
     </style>
 
 
-    <style name="Theme.EDA" parent="Base.Theme.EDA"
-        />
+    <style name="Theme.EDA" parent="Base.Theme.EDA">
+        <item name="colorPrimary">@color/orange</item>
+    </style>
 </resources>
