@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends FragmentCallback {
     TextInputEditText edit_text_email, edit_text_password;
     Button button_log;
     FirebaseAuth mAuth;
