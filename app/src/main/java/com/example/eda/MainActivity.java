@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment{
        // binding.container.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
         params.height = ViewGroup.LayoutParams.MATCH_PARENT;
         binding.container.setLayoutParams(params);
-
+        binding.bottomNavigationView.setVisibility(View.GONE);
         registerNow = findViewById(R.id.registerNow);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId()==R.id.home_item){
@@ -80,5 +80,10 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment{
     @Override
     public void changeFragment(Fragment fragment) {
         replaceFragment(fragment);
+    }
+
+    @Override
+    public void setNavigationVisibility(int state) {
+        binding.bottomNavigationView.setVisibility(state);
     }
 }

@@ -1,6 +1,5 @@
 package com.example.eda;
 
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
@@ -31,22 +30,22 @@ public class LoginFragment extends Fragment {
     Button button_log;
     FirebaseAuth mAuth;
     ProgressBar progress_bar;
-    TextView text_view,password_forgot;
+    TextView text_viewRegistretion,password_forgot;
 
     CallBackFragment callBackFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        View ContainerView = inflater.inflate(R.layout.fragment_login, container, false);
         mAuth = FirebaseAuth.getInstance();
-        text_view = view.findViewById(R.id.registerNow);
-        edit_text_email = view.findViewById(R.id.email);
-        edit_text_password = view.findViewById(R.id.password);
-        button_log = view.findViewById(R.id.btn_login);
-        progress_bar = view.findViewById(R.id.progress_bar);
-        password_forgot = view.findViewById(R.id.forgot_password);
+        text_viewRegistretion = ContainerView.findViewById(R.id.registerNow);
+        edit_text_email = ContainerView.findViewById(R.id.email);
+        edit_text_password = ContainerView.findViewById(R.id.password);
+        button_log = ContainerView.findViewById(R.id.btn_login);
+        progress_bar = ContainerView.findViewById(R.id.progress_bar);
+        password_forgot = ContainerView.findViewById(R.id.forgot_password);
 
-        text_view.setOnClickListener(new View.OnClickListener() {
+        text_viewRegistretion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (callBackFragment!=null){
@@ -79,6 +78,7 @@ public class LoginFragment extends Fragment {
                                             Toast.LENGTH_SHORT).show();
                                     if (callBackFragment!=null){
                                         callBackFragment.changeFragment(new HomeFragment());
+                                        
                                     }
 
                                 } else {
