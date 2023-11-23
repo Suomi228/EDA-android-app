@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,7 +27,12 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment{
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         loginFragment();
-        binding.container.setLayoutParams(new Fragment());
+
+        ViewGroup.LayoutParams params = binding.container.getLayoutParams();
+       // binding.container.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+        params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+        binding.container.setLayoutParams(params);
+
         registerNow = findViewById(R.id.registerNow);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId()==R.id.home_item){
