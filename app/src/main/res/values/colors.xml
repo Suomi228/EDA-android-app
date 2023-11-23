@@ -6,4 +6,6 @@
     <color name="startColor">#FFE96C2D</color>
     <color name="centerColor">#FFF18B4E</color>
     <color name="endColor">#FFF6AB73</color>
+    <color name="greyProfile">#8F8F8F</color>
+
 </resources>

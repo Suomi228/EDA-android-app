@@ -1,26 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_profile"
     android:gravity="center"
     android:orientation="vertical"
-    android:layout_height="match_parent"
+    android:outlineSpotShadowColor="@color/black"
+    android:padding="15dp"
     tools:context=".ProfileFragment">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/profile_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/user_name"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="hello" />
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="65dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="Username"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/logout"
+    <TextView
+        android:id="@+id/useremail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="95dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="bestpasha@gmail.com"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        android:text="Выйти" />
+    <TextView
+        android:id="@+id/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="145dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="Профиль"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="145dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="Мои карты"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="200dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="Имя"
+        android:textColor="@color/greyProfile"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameInputLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="235dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:constraintStart_toStartOf="parent"
+        android:constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
-</LinearLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_user"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="36dp"
+            android:constraintBottom_toBottomOf="parent"
+            android:constraintEnd_toEndOf="parent"
+            android:constraintStart_toStartOf="10dp"
+            android:constraintTop_toTopOf="parent"
+            android:drawableLeft="@drawable/frame"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/lora"
+            android:hint="Паша"
+            android:textSize="20dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="290dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="Фамилия"
+        android:textColor="@color/greyProfile"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/surnameInputLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="325dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:constraintStart_toStartOf="parent"
+        android:constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_surname"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="36dp"
+            android:constraintBottom_toBottomOf="parent"
+            android:constraintEnd_toEndOf="parent"
+            android:constraintStart_toStartOf="10dp"
+            android:constraintTop_toTopOf="parent"
+            android:drawableLeft="@drawable/frame"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/lora"
+            android:hint="Писаренко"
+            android:textSize="20dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/emailname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="380dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="Email"
+        android:textColor="@color/greyProfile"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailInputLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="415dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:constraintStart_toStartOf="parent"
+        android:constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_email"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="36dp"
+            android:constraintBottom_toBottomOf="parent"
+            android:constraintEnd_toEndOf="parent"
+            android:constraintStart_toStartOf="10dp"
+            android:constraintTop_toTopOf="parent"
+            android:drawableLeft="@drawable/baseline_alternate_email_24"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/lora"
+            android:hint="bestpasha@gmail.com"
+            android:textSize="20dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/phonename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="470dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/lora"
+        android:gravity="center"
+        android:text="Номер телефона"
+        android:textColor="@color/greyProfile"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneInputLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="505dp"
+        android:constraintBottom_toBottomOf="parent"
+        android:constraintEnd_toEndOf="parent"
+        android:constraintStart_toStartOf="parent"
+        android:constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_phone"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="36dp"
+            android:constraintBottom_toBottomOf="parent"
+            android:constraintEnd_toEndOf="parent"
+            android:constraintStart_toStartOf="10dp"
+            android:constraintTop_toTopOf="parent"
+            android:drawableLeft="@drawable/phone"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/lora"
+            android:hint="88005553535"
+            android:textSize="20dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
