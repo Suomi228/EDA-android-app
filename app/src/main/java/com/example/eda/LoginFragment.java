@@ -18,6 +18,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.eda.databinding.DialogForgotBinding;
+import com.example.eda.databinding.FragmentLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -32,6 +34,8 @@ public class LoginFragment extends FragmentCallback {
     FirebaseAuth mAuth;
     ProgressBar progress_bar;
     TextView text_viewRegistretion, password_forgot;
+    FragmentLoginBinding binding;
+    DialogForgotBinding dialogForgotBinding;
 
     CallBackFragment callBackFragment;
 
@@ -50,15 +54,18 @@ public class LoginFragment extends FragmentCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View ContainerView = inflater.inflate(R.layout.fragment_login, container, false);
+        binding = FragmentLoginBinding.inflate(inflater,container,false);
+        View view = binding.getRoot();
+        View ContainerView = binding.getRoot();
+        dialogForgotBinding = DialogForgotBinding.inflate(inflater, container, false);
         mAuth = FirebaseAuth.getInstance();
-        text_viewRegistretion = ContainerView.findViewById(R.id.registerNow);
-        edit_text_email = ContainerView.findViewById(R.id.email);
-        edit_text_password = ContainerView.findViewById(R.id.password);
-        button_log = ContainerView.findViewById(R.id.btn_login);
-        progress_bar = ContainerView.findViewById(R.id.progress_bar);
-        password_forgot = ContainerView.findViewById(R.id.forgot_password);
-        text_viewRegistretion.setOnClickListener(new View.OnClickListener() {
+        //text_viewRegistretion = ContainerView.findViewById(R.id.registerNow);
+        //edit_text_email = ContainerView.findViewById(R.id.email);
+        //edit_text_password = ContainerView.findViewById(R.id.password);
+        //button_log = ContainerView.findViewById(R.id.btn_login);
+        //progress_bar = ContainerView.findViewById(R.id.progress_bar);
+        //password_forgot = ContainerView.findViewById(R.id.forgot_password);
+        binding.registerNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (callBackFragment != null) {
@@ -68,17 +75,17 @@ public class LoginFragment extends FragmentCallback {
 
             }
         });
-        button_log.setOnClickListener(new View.OnClickListener() {
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progress_bar.setVisibility(View.VISIBLE);
+                binding.progressBar.setVisibility(View.VISIBLE);
                 String email, password;
-                email = String.valueOf(edit_text_email.getText());
-                password = String.valueOf(edit_text_password.getText());
+                email = String.valueOf(binding.email.getText());
+                password = String.valueOf(binding.password.getText());
 
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                     Toast.makeText(getContext(), "Все поля должны быть заполнены!", Toast.LENGTH_SHORT).show();
-                    progress_bar.setVisibility(View.GONE);
+                    binding.progressBar.setVisibility(View.GONE);
                     return;
                 }
 
@@ -105,7 +112,7 @@ public class LoginFragment extends FragmentCallback {
 //                        });
 
                 //затычка
-                progress_bar.setVisibility(View.GONE);
+                binding.progressBar.setVisibility(View.GONE);
                 if (true) {
                     Toast.makeText(getContext(), "С возвращением!",
                             Toast.LENGTH_SHORT).show();
@@ -118,7 +125,7 @@ public class LoginFragment extends FragmentCallback {
                 }
             }
         });
-        password_forgot.setOnClickListener(new View.OnClickListener() {
+        binding.forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
