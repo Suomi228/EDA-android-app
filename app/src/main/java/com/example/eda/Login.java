@@ -15,35 +15,32 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.eda.uretrofit.ApiAuthService;
+import com.example.eda.uretrofit.ApiClient;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
     TextInputEditText edit_text_email, edit_text_password;
     Button button_log;
-    FirebaseAuth mAuth;
+    //FirebaseAuth mAuth;
     ProgressBar progress_bar;
     TextView text_view,password_forgot;
     @Override
         public void onStart() {
             super.onStart();
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-            if((currentUser != null) && currentUser.isEmailVerified()){
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+//            FirebaseUser currentUser = mAuth.getCurrentUser();
+//            if((currentUser != null) && currentUser.isEmailVerified()){
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mAuth = FirebaseAuth.getInstance();
+//        mAuth = FirebaseAuth.getInstance();
         text_view = findViewById(R.id.registerNow);
         edit_text_email = findViewById(R.id.email);
         edit_text_password = findViewById(R.id.password);
@@ -73,23 +70,25 @@ public class Login extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progress_bar.setVisibility(View.GONE);
-                                if (task.isSuccessful() && mAuth.getCurrentUser().isEmailVerified()) {
-                                    Toast.makeText(Login.this, "С возвращением!",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(Login.this, "Неверный логин или пароль.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                ApiAuthService apiService = ApiClient.getClient().create(ApiAuthService.class);
+
+
+//                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<AuthResult> task) {
+//                                progress_bar.setVisibility(View.GONE);
+//                                if (task.isSuccessful() && mAuth.getCurrentUser().isEmailVerified()) {
+//                                    Toast.makeText(Login.this, "С возвращением!",
+//                                            Toast.LENGTH_SHORT).show();
+//                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                                    startActivity(intent);
+//                                    finish();
+//                                } else {
+//                                    Toast.makeText(Login.this, "Неверный логин или пароль.",
+//                                            Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
             }
         });
         password_forgot.setOnClickListener(new View.OnClickListener() {
@@ -109,18 +108,18 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this,"Все поля должны быть заполнены!",Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        mAuth.sendPasswordResetEmail(user_email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()){
-                                    Toast.makeText(Login.this,"На вашу почту пришло письмо!",Toast.LENGTH_SHORT).show();
-                                    dialog.dismiss();
-                                }
-                                else{
-                                    Toast.makeText(Login.this,"Что-то пошло не так.",Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+//                        mAuth.sendPasswordResetEmail(user_email).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//                                if (task.isSuccessful()){
+//                                    Toast.makeText(Login.this,"На вашу почту пришло письмо!",Toast.LENGTH_SHORT).show();
+//                                    dialog.dismiss();
+//                                }
+//                                else{
+//                                    Toast.makeText(Login.this,"Что-то пошло не так.",Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
 
                     }
                 });
