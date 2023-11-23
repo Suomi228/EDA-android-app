@@ -42,7 +42,9 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment{
                 replaceFragment(new MenuFragment());
             }
             if (item.getItemId()==R.id.profile_item){
-                replaceFragment(new ProfileFragment());
+                ProfileFragment profileFragment = new ProfileFragment();
+                profileFragment.setCallBackFragment(this);
+                replaceFragment(profileFragment);
             }
             if (item.getItemId()==R.id.cart_item){
                 replaceFragment(new CartFragment());
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment{
 
     }
     private void replaceFragment(Fragment fragment){
+
         FragmentManager f1 = getSupportFragmentManager();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.addToBackStack(null);
@@ -65,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment{
         FragmentManager f1 = getSupportFragmentManager();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container,fragment);
-
         ft.commit();
     }
     private void registrationFragment(){

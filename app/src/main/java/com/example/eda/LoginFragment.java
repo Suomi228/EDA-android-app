@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class LoginFragment extends Fragment {
@@ -33,6 +34,17 @@ public class LoginFragment extends Fragment {
     TextView text_viewRegistretion,password_forgot;
 
     CallBackFragment callBackFragment;
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if((currentUser != null) && currentUser.isEmailVerified()){
+            if (callBackFragment!=null){
+                callBackFragment.changeFragment(new HomeFragment());
+
+            }
+        }
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,6 +62,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 if (callBackFragment!=null){
                     callBackFragment.changeFragment(new RegistrationFragment());
+
                 }
 
             }
@@ -135,7 +148,8 @@ public class LoginFragment extends Fragment {
                 dialog.show();
             }
         });
-        return inflater.inflate(R.layout.fragment_login, container, false);
+//        return inflater.inflate(R.layout.fragment_login, container, false);
+        return ContainerView;
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){

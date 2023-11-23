@@ -41,8 +41,7 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
     @Override
@@ -72,6 +71,7 @@ public class ProfileFragment extends Fragment {
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 FirebaseAuth.getInstance().signOut();
                                                 if (callBackFragment!=null){
+                                                    ((MainActivity)getActivity()).setNavigationVisibility(View.INVISIBLE);
                                                     callBackFragment.changeFragment(new LoginFragment());
                                                 }
                                             }
@@ -87,6 +87,9 @@ public class ProfileFragment extends Fragment {
                 alert.show();
             }
         });
+    }
+    public void setCallBackFragment(CallBackFragment callBackFragment){
+        this.callBackFragment = callBackFragment;
     }
 
 }
