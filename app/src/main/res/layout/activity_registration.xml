@@ -10,7 +10,7 @@
     android:orientation="vertical"
     android:outlineSpotShadowColor="@color/black"
     android:padding="15dp"
-    tools:context=".Login">
+    tools:context=".RegistrationFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="300dp"
@@ -171,9 +171,9 @@
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_marginEnd="140dp"
         android:foregroundGravity="center"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
