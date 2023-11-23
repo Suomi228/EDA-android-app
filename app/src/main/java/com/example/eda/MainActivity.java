@@ -5,22 +5,19 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.eda.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity implements CallBackFragment{
+public class MainActivity extends AppCompatActivity implements CallBackFragment {
 
     ActivityMainBinding binding;
     TextView registerNow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,59 +26,72 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment{
         loginFragment();
 
         ViewGroup.LayoutParams params = binding.container.getLayoutParams();
-       // binding.container.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+        // binding.container.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
         params.height = ViewGroup.LayoutParams.MATCH_PARENT;
         binding.container.setLayoutParams(params);
         binding.bottomNavigationView.setVisibility(View.GONE);
         registerNow = findViewById(R.id.registerNow);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            if (item.getItemId()==R.id.home_item){
-                replaceFragment(new HomeFragment());
+            if (item.getItemId() == R.id.home_item) {
+                replaceFragment(new HomeFragment(), true);
             }
-            if (item.getItemId()==R.id.menu_item){
-                replaceFragment(new MenuFragment());
+            if (item.getItemId() == R.id.menu_item) {
+                replaceFragment(new MenuFragment(), true);
             }
-            if (item.getItemId()==R.id.profile_item){
-                ProfileFragment profileFragment = new ProfileFragment();
-                profileFragment.setCallBackFragment(this);
-                replaceFragment(profileFragment);
+            if (item.getItemId() == R.id.profile_item) {
+                replaceFragment(new ProfileFragment(), true);
             }
-            if (item.getItemId()==R.id.cart_item){
-                replaceFragment(new CartFragment());
+            if (item.getItemId() == R.id.cart_item) {
+                replaceFragment(new CartFragment(), true);
             }
 
             return true;
         });
-
     }
-    private void replaceFragment(Fragment fragment){
 
-        FragmentManager f1 = getSupportFragmentManager();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.addToBackStack(null);
-        ft.replace(R.id.container,fragment);
-        ft.commit();
+    @Override
+    public void onBackPressed() {
+        // todo что бы не выходило из приложения АХУЕТ ЭТО КОПАЙЛОТ ДОПИСАЛ НАХУЙ,(НАХУЙ ТОЖЕ ОН)
     }
-    private void loginFragment(){
+
+    private void replaceFragment(Fragment fragment, boolean allowReturn) {
+        if(fragment instanceof CallBackFragment)
+
+        if (false) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
+    }
+
+    private void loginFragment() {
         LoginFragment fragment = new LoginFragment();
         fragment.setCallBackFragment(this);
         FragmentManager f1 = getSupportFragmentManager();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container,fragment);
+        ft.replace(R.id.container, fragment);
         ft.commit();
     }
-    private void registrationFragment(){
+
+    private void registrationFragment() {
         Fragment fragment = new LoginFragment();
         FragmentManager f1 = getSupportFragmentManager();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.addToBackStack(null);
-        ft.replace(R.id.container,fragment);
+        ft.replace(R.id.container, fragment);
         ft.commit();
     }
 
     @Override
-    public void changeFragment(Fragment fragment) {
-        replaceFragment(fragment);
+    public void changeFragment(Fragment fragment, boolean allowReturn) {
+        replaceFragment(fragment, allowReturn);
     }
 
     @Override

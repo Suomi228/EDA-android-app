@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends FragmentCallback {
 
 
     @Override

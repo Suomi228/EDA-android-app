@@ -58,7 +58,7 @@ public class RegistrationFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 if (callBackFragment!=null){
-                    callBackFragment.changeFragment(new LoginFragment());
+                    callBackFragment.changeFragment(new LoginFragment(),true);
                 }
             }
         });
@@ -100,7 +100,7 @@ public class RegistrationFragment extends Fragment{
                                                 Toast.makeText(getContext(), "Аккаунт создан, пожалуйста подтвердите почту.",
                                                         Toast.LENGTH_SHORT).show();
                                                 if (callBackFragment!=null){
-                                                    callBackFragment.changeFragment(new LoginFragment());
+                                                    callBackFragment.changeFragment(new LoginFragment(),true);
                                                 }
                                             }
                                             else{

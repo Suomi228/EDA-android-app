@@ -31,20 +31,22 @@ public class LoginFragment extends Fragment {
     Button button_log;
     FirebaseAuth mAuth;
     ProgressBar progress_bar;
-    TextView text_viewRegistretion,password_forgot;
+    TextView text_viewRegistretion, password_forgot;
 
     CallBackFragment callBackFragment;
+
     @Override
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if((currentUser != null) && currentUser.isEmailVerified()){
-            if (callBackFragment!=null){
-                callBackFragment.changeFragment(new HomeFragment());
+        if ((currentUser != null) && currentUser.isEmailVerified()) {
+            if (callBackFragment != null) {
+                callBackFragment.changeFragment(new HomeFragment(), true);
 
             }
         }
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,8 +62,8 @@ public class LoginFragment extends Fragment {
         text_viewRegistretion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (callBackFragment!=null){
-                    callBackFragment.changeFragment(new RegistrationFragment());
+                if (callBackFragment != null) {
+                    callBackFragment.changeFragment(new RegistrationFragment(), true);
 
                 }
 
@@ -71,44 +73,57 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 progress_bar.setVisibility(View.VISIBLE);
-                String email,password;
+                String email, password;
                 email = String.valueOf(edit_text_email.getText());
                 password = String.valueOf(edit_text_password.getText());
 
-                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
-                    Toast.makeText(getContext(),"Все поля должны быть заполнены!",Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                    Toast.makeText(getContext(), "Все поля должны быть заполнены!", Toast.LENGTH_SHORT).show();
                     progress_bar.setVisibility(View.GONE);
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progress_bar.setVisibility(View.GONE);
-                                if (task.isSuccessful() && mAuth.getCurrentUser().isEmailVerified()) {
-                                    Toast.makeText(getContext(), "С возвращением!",
-                                            Toast.LENGTH_SHORT).show();
-                                    if (callBackFragment!=null){
-                                        HomeFragment homeFragment = new HomeFragment();
-//                                      homeFragment.setCallBackFragment(callBackFragment);
-                                        callBackFragment.changeFragment(homeFragment);
+//                mAuth.signInWithEmailAndPassword(email, password)
+//                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<AuthResult> task) {
+//                                progress_bar.setVisibility(View.GONE);
+//                                if (task.isSuccessful() && mAuth.getCurrentUser().isEmailVerified()) {
+//                                    Toast.makeText(getContext(), "С возвращением!",
+//                                            Toast.LENGTH_SHORT).show();
+//                                    if (callBackFragment!=null){
+//                                        HomeFragment homeFragment = new HomeFragment();
+////                                      homeFragment.setCallBackFragment(callBackFragment);
+//                                        callBackFragment.changeFragment(homeFragment,true);
+//
+//                                    }
+//
+//                                } else {
+//                                    Toast.makeText(getContext(), "Неверный логин или пароль.",
+//                                            Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
 
-                                    }
+                //затычка
+                progress_bar.setVisibility(View.GONE);
+                if (true) {
+                    Toast.makeText(getContext(), "С возвращением!",
+                            Toast.LENGTH_SHORT).show();
+                    if (callBackFragment != null) {
+                        HomeFragment homeFragment = new HomeFragment();
+                        homeFragment.setCallBackFragment(callBackFragment);
+                        callBackFragment.changeFragment(homeFragment, true);
+                    }
 
-                                } else {
-                                    Toast.makeText(getContext(), "Неверный логин или пароль.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                }
             }
         });
         password_forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                View dialog_view = getLayoutInflater().inflate(R.layout.dialog_forgot,null);
+                View dialog_view = getLayoutInflater().inflate(R.layout.dialog_forgot, null);
                 TextInputEditText email_forgot = dialog_view.findViewById(R.id.email_forgot);
                 builder.setView(dialog_view);
                 AlertDialog dialog = builder.create();
@@ -142,7 +157,7 @@ public class LoginFragment extends Fragment {
                         dialog.dismiss();
                     }
                 });
-                if (dialog.getWindow()!=null){
+                if (dialog.getWindow() != null) {
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
                 }
                 dialog.show();
@@ -151,13 +166,15 @@ public class LoginFragment extends Fragment {
 //        return inflater.inflate(R.layout.fragment_login, container, false);
         return ContainerView;
     }
+
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
-        super.onViewCreated(view,savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
 
     }
-    public void setCallBackFragment(CallBackFragment callBackFragment){
+
+    public void setCallBackFragment(CallBackFragment callBackFragment) {
         this.callBackFragment = callBackFragment;
     }
 

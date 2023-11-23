@@ -29,7 +29,7 @@ public class ProfileFragment extends Fragment {
         super.onStart();
         if (user == null){
             if (callBackFragment!=null){
-                callBackFragment.changeFragment(new LoginFragment());
+                callBackFragment.changeFragment(new LoginFragment(), true);
             }
         }
     }
@@ -53,7 +53,7 @@ public class ProfileFragment extends Fragment {
         user = auth.getCurrentUser();
         if (user == null){
             if (callBackFragment!=null){
-                callBackFragment.changeFragment(new LoginFragment());
+                callBackFragment.changeFragment(new LoginFragment(), true);
             }
         }
         else{
@@ -72,7 +72,7 @@ public class ProfileFragment extends Fragment {
                                                 FirebaseAuth.getInstance().signOut();
                                                 if (callBackFragment!=null){
                                                     ((MainActivity)getActivity()).setNavigationVisibility(View.INVISIBLE);
-                                                    callBackFragment.changeFragment(new LoginFragment());
+                                                    callBackFragment.changeFragment(new LoginFragment(),true);
                                                 }
                                             }
                                         })
