@@ -10,7 +10,7 @@
     android:orientation="vertical"
     android:outlineSpotShadowColor="@color/black"
     android:padding="15dp"
-    tools:context=".Login">
+    tools:context=".RegistrationFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="300dp"
