@@ -77,8 +77,10 @@ public class LoginFragment extends Fragment {
                                     Toast.makeText(getContext(), "С возвращением!",
                                             Toast.LENGTH_SHORT).show();
                                     if (callBackFragment!=null){
-                                        callBackFragment.changeFragment(new HomeFragment());
-                                        
+                                        HomeFragment homeFragment = new HomeFragment();
+                                        homeFragment.setCallBackFragment(callBackFragment);
+                                        callBackFragment.changeFragment(homeFragment);
+
                                     }
 
                                 } else {
