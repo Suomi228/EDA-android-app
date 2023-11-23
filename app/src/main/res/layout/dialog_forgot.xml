@@ -74,15 +74,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_reset"
                 android:layout_width="110dp"
                 android:layout_height="48dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="48dp"
                 android:background="@drawable/gradient"
                 android:fontFamily="@font/lora"
                 android:text="Сброс"
@@ -97,8 +96,8 @@
                 android:layout_width="110dp"
                 android:layout_height="48dp"
                 android:layout_alignBottom="@+id/btn_reset"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="180dp"
                 android:background="@drawable/gradient"
                 android:fontFamily="@font/lora"
                 android:text="Отмена"

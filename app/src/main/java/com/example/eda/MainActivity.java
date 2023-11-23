@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment{
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         loginFragment();
+        binding.container.setLayoutParams(new Fragment());
         registerNow = findViewById(R.id.registerNow);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId()==R.id.home_item){
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment{
     private void replaceFragment(Fragment fragment){
         FragmentManager f1 = getSupportFragmentManager();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.addToBackStack(null);
         ft.replace(R.id.container,fragment);
         ft.commit();
     }
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment{
         FragmentManager f1 = getSupportFragmentManager();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container,fragment);
+
         ft.commit();
     }
     private void registrationFragment(){

@@ -24,11 +24,13 @@ public class ProfileFragment extends Fragment {
     Button logout;
     TextView user_name;
     FirebaseUser user;
+    CallBackFragment callBackFragment;
     public void onStart() {
         super.onStart();
         if (user == null){
-            Intent intent = new Intent(getActivity(), Login.class);
-            startActivity(intent);
+            if (callBackFragment!=null){
+                callBackFragment.changeFragment(new LoginFragment());
+            }
         }
     }
 
@@ -51,8 +53,9 @@ public class ProfileFragment extends Fragment {
         logout = (Button) getView().findViewById(R.id.logout);
         user = auth.getCurrentUser();
         if (user == null){
-            Intent intent = new Intent(getActivity(), Login.class);
-            startActivity(intent);
+            if (callBackFragment!=null){
+                callBackFragment.changeFragment(new LoginFragment());
+            }
         }
         else{
             user_name.setText(user.getEmail());
@@ -68,9 +71,9 @@ public class ProfileFragment extends Fragment {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 FirebaseAuth.getInstance().signOut();
-                                                Intent intent = new Intent(getActivity(), Login.class);
-                                                startActivity(intent);
-                                                getActivity().finish();
+                                                if (callBackFragment!=null){
+                                                    callBackFragment.changeFragment(new LoginFragment());
+                                                }
                                             }
                                         })
                         .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
