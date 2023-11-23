@@ -55,7 +55,6 @@ public class LoginFragment extends FragmentCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater,container,false);
-        View view = binding.getRoot();
         View ContainerView = binding.getRoot();
         dialogForgotBinding = DialogForgotBinding.inflate(inflater, container, false);
         mAuth = FirebaseAuth.getInstance();

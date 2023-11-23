@@ -15,7 +15,6 @@ import com.example.eda.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity implements CallBackFragment {
 
     ActivityMainBinding binding;
-    TextView registerNow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
         params.height = ViewGroup.LayoutParams.MATCH_PARENT;
         binding.container.setLayoutParams(params);
         binding.bottomNavigationView.setVisibility(View.GONE);
-        registerNow = findViewById(R.id.registerNow);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.home_item) {
                 replaceFragment(new HomeFragment(), true);
