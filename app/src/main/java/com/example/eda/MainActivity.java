@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        loginFragment();
+        replaceFragment(new LoginFragment(),false);
 
         ViewGroup.LayoutParams params = binding.container.getLayoutParams();
         // binding.container.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -54,34 +53,32 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
         // todo что бы не выходило из приложения АХУЕТ ЭТО КОПАЙЛОТ ДОПИСАЛ НАХУЙ,(НАХУЙ ТОЖЕ ОН)
     }
 
-    private void replaceFragment(Fragment fragment, boolean allowReturn) {
-        if(fragment instanceof CallBackFragment)
-
-        if (false) {
+    private void replaceFragment(FragmentCallback fragment, boolean allowReturn) {
+        fragment.setCallBackFragment(this);
+        if (allowReturn) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.container, fragment)
                     .addToBackStack(null)
                     .commit();
         }
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
     }
 
-    private void loginFragment() {
-        LoginFragment fragment = new LoginFragment();
-        fragment.setCallBackFragment(this);
-        FragmentManager f1 = getSupportFragmentManager();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container, fragment);
-        ft.commit();
-    }
+//    private void loginFragment() {
+//        LoginFragment fragment = new LoginFragment();
+//        fragment.setCallBackFragment(this);
+//        FragmentManager f1 = getSupportFragmentManager();
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        ft.replace(R.id.container, fragment);
+//        ft.commit();
+//    }
 
     private void registrationFragment() {
-        Fragment fragment = new LoginFragment();
+        FragmentCallback fragment = new LoginFragment();
         FragmentManager f1 = getSupportFragmentManager();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.addToBackStack(null);
@@ -90,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
     }
 
     @Override
-    public void changeFragment(Fragment fragment, boolean allowReturn) {
+    public void changeFragment(FragmentCallback fragment, boolean allowReturn) {
         replaceFragment(fragment, allowReturn);
     }
 

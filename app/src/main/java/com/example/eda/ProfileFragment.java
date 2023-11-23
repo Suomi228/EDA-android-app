@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends FragmentCallback {
     FirebaseAuth auth;
     Button logout;
     TextView user_name;
@@ -30,6 +30,7 @@ public class ProfileFragment extends Fragment {
         if (user == null){
             if (callBackFragment!=null){
                 callBackFragment.changeFragment(new LoginFragment(), true);
+                callBackFragment.setNavigationVisibility(View.INVISIBLE);
             }
         }
     }

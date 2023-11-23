@@ -58,7 +58,6 @@ public class LoginFragment extends FragmentCallback {
         button_log = ContainerView.findViewById(R.id.btn_login);
         progress_bar = ContainerView.findViewById(R.id.progress_bar);
         password_forgot = ContainerView.findViewById(R.id.forgot_password);
-
         text_viewRegistretion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

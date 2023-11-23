@@ -26,7 +26,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class RegistrationFragment extends Fragment{
+public class RegistrationFragment extends FragmentCallback{
 
     TextInputEditText edit_text_email, edit_text_password, edit_text_confirm;
     Button button_reg;
@@ -45,6 +45,7 @@ public class RegistrationFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_registration, container, false);
         mAuth = FirebaseAuth.getInstance();
         edit_text_email = view.findViewById(R.id.email);
