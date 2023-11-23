@@ -118,7 +118,7 @@ public class RegistrationFragment extends Fragment{
             }
         });
 
-        return inflater.inflate(R.layout.fragment_registration, container, false);
+        return view;
     }
     public void setCallBackFragment(CallBackFragment callBackFragment){
         this.callBackFragment = callBackFragment;
