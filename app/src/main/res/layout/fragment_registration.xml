@@ -176,4 +176,13 @@
         android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="80dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/flatware_silhouette_of_a_knife_and_a_fork_cross_rd5vyp8d1cb4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
