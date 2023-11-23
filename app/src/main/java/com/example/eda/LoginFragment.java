@@ -78,7 +78,7 @@ public class LoginFragment extends Fragment {
                                             Toast.LENGTH_SHORT).show();
                                     if (callBackFragment!=null){
                                         HomeFragment homeFragment = new HomeFragment();
-                                        homeFragment.setCallBackFragment(callBackFragment);
+//                                      homeFragment.setCallBackFragment(callBackFragment);
                                         callBackFragment.changeFragment(homeFragment);
 
                                     }
