@@ -8,4 +8,8 @@
     <color name="endColor">#FFF6AB73</color>
     <color name="orange_color">#E96C2D</color>
     <color name="gray">#8F8F8F</color>
+    <color name="whitepro">#FFFBFB</color>
+    <style name="button" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent"> @android:color/white</item>
+    </style>
 </resources>
