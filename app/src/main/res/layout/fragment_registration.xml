@@ -180,7 +180,7 @@
         android:id="@+id/imageView"
         android:layout_width="80dp"
         android:layout_height="77dp"
-        android:layout_marginStart="148dp"
+        android:layout_marginStart="130dp"
         android:layout_marginTop="56dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
