@@ -10,7 +10,7 @@
     android:orientation="vertical"
     android:outlineSpotShadowColor="@color/black"
     android:padding="15dp"
-    tools:context=".Login">
+        tools:context=".LoginFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="300dp"
@@ -28,14 +28,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.667">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-
-            >
+            android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -44,72 +42,45 @@
                 android:gravity="center"
                 android:text="Вход"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/registerNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="110dp"
+                android:fontFamily="@font/lora"
                 android:gravity="center"
                 android:text="Регистрация"
                 android:textColor="@color/gray"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/lora"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
-            android:orientation="vertical">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txt_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="68dp"
                 android:fontFamily="@font/lora"
                 android:text="Email"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-
-                >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/lora"
-
-                    android:textSize="15sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/txt_pass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="0dp"
-                android:fontFamily="@font/lora"
-                android:text="Пароль"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                app:endIconMode="password_toggle">
+                android:layout_marginBottom="144dp"
+                app:endIconMode="password_toggle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password"
@@ -125,35 +96,70 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/forgot_password"
+                android:id="@+id/txt_pass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:textColor="@color/orange_color"
-                android:layout_marginStart="160dp"
-                android:layout_marginEnd="5dp"
-                android:text="Забыли пароль?"
-                android:fontFamily="@font/lora_bold"
-                android:textSize="15sp"
-                />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="168dp"
+                android:fontFamily="@font/lora"
+                android:text="Пароль"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="96dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:drawableEnd="@drawable/baseline_email_24"
+                    android:fontFamily="@font/lora"
+                    android:inputType="text|textVisiblePassword"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_login"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="70dp"
+                android:layout_marginStart="76dp"
+                android:layout_marginBottom="24dp"
                 android:background="@drawable/gradient"
                 android:elevation="20dp"
                 android:fontFamily="@font/lora"
                 android:text="Вход"
-                android:layout_marginBottom="5dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="100dp"
+                android:fontFamily="@font/lora_bold"
+                android:text="Забыли пароль?"
+                android:textColor="@color/orange_color"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
     <ProgressBar
@@ -165,4 +171,15 @@
         android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="80dp"
+        android:layout_height="77dp"
+
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/flatware_silhouette_of_a_knife_and_a_fork_cross_rd5vyp8d1cb4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
