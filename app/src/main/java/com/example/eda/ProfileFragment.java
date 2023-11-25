@@ -52,8 +52,8 @@ public class ProfileFragment extends FragmentCallback {
         super.onViewCreated(view,savedInstanceState);
 
         auth = FirebaseAuth.getInstance();
-        user_name = (TextView)getView().findViewById(R.id.user_name);
-        logoutButton = (Button) getView().findViewById(R.id.logout);
+        //user_name = (TextView)getView().findViewById(R.id.user_name);
+        //logoutButton = (Button) getView().findViewById(R.id.logout);
         user = auth.getCurrentUser();
         if (user == null){
             if (callBackFragment!=null){
