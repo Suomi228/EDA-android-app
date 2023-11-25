@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.eda.databinding.ActivityMainBinding;
+import com.example.eda.retrofitThigies.BearerTokenManager;
 
 public class MainActivity extends AppCompatActivity implements CallBackFragment {
 
@@ -19,9 +20,17 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        BearerTokenManager bearerTokenManager = new BearerTokenManager(this);
+        bearerTokenManager.getTokenFromPref();
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new LoginFragment(),false);
+
+        if (bearerTokenManager.isTokenNotExpired()) {
+            replaceFragment(new HomeFragment(), false);
+        } else
+            replaceFragment(new LoginFragment(), false);
 
         ViewGroup.LayoutParams params = binding.container.getLayoutParams();
         // binding.container.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;

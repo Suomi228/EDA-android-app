@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -20,12 +19,20 @@ import android.widget.Toast;
 
 import com.example.eda.databinding.DialogForgotBinding;
 import com.example.eda.databinding.FragmentLoginBinding;
+import com.example.eda.retrofitThigies.ApiClient;
+import com.example.eda.retrofitThigies.ApiService;
+import com.example.eda.retrofitThigies.BearerTokenManager;
+import com.example.eda.retrofitThigies.models.UserLoginRequest;
+import com.example.eda.retrofitThigies.models.UserRegisterOrLoginResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginFragment extends FragmentCallback {
@@ -88,6 +95,36 @@ public class LoginFragment extends FragmentCallback {
                     return;
                 }
 
+                ApiService apiService = ApiClient.getClient().create(ApiService.class);
+                UserLoginRequest userLoginRequest = new UserLoginRequest(email, password);
+                Call<UserRegisterOrLoginResponse> callLogin = apiService.loginUser(userLoginRequest);
+
+                callLogin.enqueue(new Callback<UserRegisterOrLoginResponse>() {
+                    @Override
+                    public void onResponse(Call<UserRegisterOrLoginResponse> call, Response<UserRegisterOrLoginResponse> response) {
+                        if (response.isSuccessful()){
+                            Toast.makeText(getContext(), "С возвращением!",
+                                    Toast.LENGTH_SHORT).show();
+                            if (callBackFragment!=null){
+                                BearerTokenManager bearerTokenManager = new BearerTokenManager(getContext());
+                                bearerTokenManager.saveTokenToPref(response.body().getToken());
+                                HomeFragment homeFragment = new HomeFragment();
+                                homeFragment.setCallBackFragment(callBackFragment);
+                                callBackFragment.changeFragment(homeFragment, true);
+                            }
+                        }else {
+                            Toast.makeText(getContext(), "Неверный логин или пароль.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserRegisterOrLoginResponse> call, Throwable t) {
+
+                    }
+                });
+
+
 //                mAuth.signInWithEmailAndPassword(email, password)
 //                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 //                            @Override
@@ -111,17 +148,17 @@ public class LoginFragment extends FragmentCallback {
 //                        });
 
                 //затычка
-                binding.progressBar.setVisibility(View.GONE);
-                if (true) {
-                    Toast.makeText(getContext(), "С возвращением!",
-                            Toast.LENGTH_SHORT).show();
-                    if (callBackFragment != null) {
-                        HomeFragment homeFragment = new HomeFragment();
-                        homeFragment.setCallBackFragment(callBackFragment);
-                        callBackFragment.changeFragment(homeFragment, true);
-                    }
-
-                }
+//                binding.progressBar.setVisibility(View.GONE);
+//                if (true) {
+//                    Toast.makeText(getContext(), "С возвращением!",
+//                            Toast.LENGTH_SHORT).show();
+//                    if (callBackFragment != null) {
+//                        HomeFragment homeFragment = new HomeFragment();
+//                        homeFragment.setCallBackFragment(callBackFragment);
+//                        callBackFragment.changeFragment(homeFragment, true);
+//                    }
+//
+//                }
             }
         });
         binding.forgotPassword.setOnClickListener(new View.OnClickListener() {

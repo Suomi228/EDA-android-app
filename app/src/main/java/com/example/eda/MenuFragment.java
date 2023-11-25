@@ -24,6 +24,7 @@ public class MenuFragment extends FragmentCallback {
                              Bundle savedInstanceState) {
         binding = FragmentMenuBinding.inflate(inflater,container,false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+        int a = 1;
+        return binding.getRoot();
     }
 }
