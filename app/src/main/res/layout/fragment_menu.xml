@@ -7,12 +7,19 @@
     tools:context=".MenuFragment">
 
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Menu fragment" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rec_view_meals"
+            android:id="@+id/recViewMeals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
@@ -24,16 +31,6 @@
 
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Menu fragment" />
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

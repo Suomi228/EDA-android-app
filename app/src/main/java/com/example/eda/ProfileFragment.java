@@ -45,7 +45,7 @@ public class ProfileFragment extends FragmentCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater,container,false);
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return binding.getRoot();
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
@@ -64,33 +64,33 @@ public class ProfileFragment extends FragmentCallback {
             user_name.setText(user.getEmail());
         }
 
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder a_builder = new AlertDialog.Builder(getActivity());
-                a_builder.setMessage("Вы уверены что хотите выйти из аккаунта?")
-                                .setCancelable(false)
-                                        .setPositiveButton("Да", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-                                                FirebaseAuth.getInstance().signOut();
-                                                if (callBackFragment!=null){
-                                                    ((MainActivity)getActivity()).setNavigationVisibility(View.INVISIBLE);
-                                                    callBackFragment.changeFragment(new LoginFragment(),true);
-                                                }
-                                            }
-                                        })
-                        .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        });
-                AlertDialog alert = a_builder.create();
-                alert.setTitle("Выход из аккаунта");
-                alert.show();
-            }
-        });
+//        logoutButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog.Builder a_builder = new AlertDialog.Builder(getActivity());
+//                a_builder.setMessage("Вы уверены что хотите выйти из аккаунта?")
+//                                .setCancelable(false)
+//                                        .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                                FirebaseAuth.getInstance().signOut();
+//                                                if (callBackFragment!=null){
+//                                                    ((MainActivity)getActivity()).setNavigationVisibility(View.INVISIBLE);
+//                                                    callBackFragment.changeFragment(new LoginFragment(),true);
+//                                                }
+//                                            }
+//                                        })
+//                        .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                dialogInterface.cancel();
+//                            }
+//                        });
+//                AlertDialog alert = a_builder.create();
+//                alert.setTitle("Выход из аккаунта");
+//                alert.show();
+//            }
+//        });
     }
     public void setCallBackFragment(CallBackFragment callBackFragment){
         this.callBackFragment = callBackFragment;

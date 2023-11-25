@@ -92,6 +92,7 @@
                     android:fontFamily="@font/lora"
                     android:inputType="textPassword"
 
+                    android:text="123"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,6 +126,7 @@
                     android:drawableEnd="@drawable/baseline_email_24"
                     android:fontFamily="@font/lora"
                     android:inputType="text|textVisiblePassword"
+                    android:text="123"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
