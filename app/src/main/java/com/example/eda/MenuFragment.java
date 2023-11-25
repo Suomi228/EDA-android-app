@@ -34,14 +34,14 @@ public class MenuFragment extends FragmentCallback {
         binding.recViewMeals.setLayoutManager(linearLayoutManager);
 
         ArrayList<CategoryDomain> category = new ArrayList<>();
-        category.add(new CategoryDomain("Salads","category_salads"));
-        category.add(new CategoryDomain("FirstDishes","category_first_dishes"));
-        category.add(new CategoryDomain("SecondDishes","category_second_dishes"));
-        category.add(new CategoryDomain("SideDishes","category_side_dishes"));
-        category.add(new CategoryDomain("Deserts","category_desserts"));
-        category.add(new CategoryDomain("Bakery","category_bakery"));
-        category.add(new CategoryDomain("Pizza","category_pizza"));
-        category.add(new CategoryDomain("Drinks","category_drinks"));
+        category.add(new CategoryDomain("Салаты","category_salads"));
+        category.add(new CategoryDomain("Первое","category_first_dishes"));
+        category.add(new CategoryDomain("Второе","category_second_dishes"));
+        category.add(new CategoryDomain("Гарниры","category_side_dishes"));
+        category.add(new CategoryDomain("Дессерты","category_deserts"));
+        category.add(new CategoryDomain("Выпечка","category_bakery"));
+        category.add(new CategoryDomain("Пицца","category_pizza"));
+        category.add(new CategoryDomain("Напитки","category_drinks"));
         adapter = new CategoryAdapter(category);
         binding.recViewMeals.setAdapter(adapter);
 

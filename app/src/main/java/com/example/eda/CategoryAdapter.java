@@ -37,29 +37,35 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         switch (position){
             case 0:
                 picUrl = "category_salads";
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
                 break;
-                //holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable, c));
             case 1:
                 picUrl = "category_first_dishes";
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
                 break;
-                //holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable, c));
             case 2:
                 picUrl = "category_second_dishes";
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
                 break;
             case 3:
                 picUrl = "category_side_dishes";
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
                 break;
             case 4:
-                picUrl = "category_desserts";
+                picUrl = "category_deserts";
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
                 break;
             case 5:
                 picUrl = "category_bakery";
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
                 break;
             case 6:
                 picUrl = "category_pizza";
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
                 break;
             case 7:
                 picUrl = "category_drinks";
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
                 break;
 
         }
