@@ -10,9 +10,10 @@ import io.jsonwebtoken.Jwts;
 
 public class BearerTokenManager {
     private Context context;
-    private String EdaAppPrefs = "EdaAppPrefs";
+    private static final String EDA_APP_PREFS = "EdaAppPrefs";
     private static String token = "";
 
+    private static final String SECRET_KEY = ("9c56bbb2442aa20f7d48ce5ba13b75c38000266334fb008387322a8a8ff24944").toUpperCase();
     public BearerTokenManager(Context context) {
         this.context = context;
     }
@@ -20,7 +21,7 @@ public class BearerTokenManager {
     public void saveTokenToPref(String token) {
         this.token = token;
         // Получение объекта SharedPreferences
-        SharedPreferences preferences = context.getSharedPreferences(EdaAppPrefs, Context.MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(EDA_APP_PREFS, Context.MODE_PRIVATE);
         // Получение объекта Editor для редактирования данных
         SharedPreferences.Editor editor = preferences.edit();
         // Запись данных
@@ -31,7 +32,7 @@ public class BearerTokenManager {
 
     public String getTokenFromPref() {
         // Получение объекта SharedPreferences
-        SharedPreferences preferences = context.getSharedPreferences(EdaAppPrefs, Context.MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(EDA_APP_PREFS, Context.MODE_PRIVATE);
         // Получение сохраненного значения
         String token = preferences.getString("BearerToken", "");
         this.token = token;
@@ -46,7 +47,7 @@ public class BearerTokenManager {
         if (token.length() <= 0)
             return false;
         Claims claims = Jwts.parser()
-                .setSigningKey("eda")
+                .setSigningKey(SECRET_KEY)
                 .parseClaimsJws(token)
                 .getBody();
         Date expDate = new Date(claims.getExpiration().getTime() * 1000);
