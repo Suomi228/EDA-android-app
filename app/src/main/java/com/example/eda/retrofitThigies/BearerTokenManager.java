@@ -39,6 +39,17 @@ public class BearerTokenManager {
         return token;
     }
 
+    public void deleteTokenFromPref() {
+        // Получение объекта SharedPreferences
+        SharedPreferences preferences = context.getSharedPreferences(EDA_APP_PREFS, Context.MODE_PRIVATE);
+        // Получение объекта Editor для редактирования данных
+        SharedPreferences.Editor editor = preferences.edit();
+        // Запись данных
+        editor.putString("BearerToken", "");
+        // Применение изменений
+        editor.apply();
+    }
+
     public static String getToken() {
         return token;
     }
@@ -52,7 +63,7 @@ public class BearerTokenManager {
                 .getBody();
         Date expDate = new Date(claims.getExpiration().getTime() * 1000);
         Date now = new Date();
-        if (expDate.before(now)) {
+        if (now.before(expDate)) {
             return true;
         }
         return false;
