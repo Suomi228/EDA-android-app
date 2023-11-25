@@ -1,4 +1,4 @@
-package com.example.eda;
+package com.example.eda.menuStuff;
 
 public class CategoryDomain {
 

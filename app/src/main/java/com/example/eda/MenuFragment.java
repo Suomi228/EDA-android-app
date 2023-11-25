@@ -4,18 +4,17 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.renderscript.ScriptGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.eda.databinding.FragmentMenuBinding;
+import com.example.eda.menuStuff.CategoryAdapter;
+import com.example.eda.menuStuff.CategoryDomain;
+import com.example.eda.menuStuff.MenuItemOffset;
 
 import java.util.ArrayList;
 
@@ -44,7 +43,7 @@ public class MenuFragment extends FragmentCallback {
         category.add(new CategoryDomain("Напитки","category_drinks"));
         adapter = new CategoryAdapter(category);
         binding.recViewMeals.setAdapter(adapter);
-
+        binding.recViewMeals.addItemDecoration(new MenuItemOffset(20));
     }
 
     @Override

@@ -27,8 +27,6 @@
             android:layout_marginTop="40dp"
 
             android:scrollbars="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:reverseLayout="true">
 
         </androidx.recyclerview.widget.RecyclerView>
