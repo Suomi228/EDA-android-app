@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,10 +18,11 @@ import com.example.eda.databinding.FragmentMenuBinding;
 import com.example.eda.menuStuff.CategoryAdapter;
 import com.example.eda.menuStuff.CategoryDomain;
 import com.example.eda.menuStuff.MenuItemOffset;
+import com.example.eda.menuStuff.RecyclerViewInterface;
 
 import java.util.ArrayList;
 
-public class MenuFragment extends FragmentCallback {
+public class MenuFragment extends FragmentCallback implements RecyclerViewInterface {
     FragmentMenuBinding binding;
     RecyclerView.Adapter adapter;
     RecyclerView rec_view_category_list;
@@ -60,4 +64,45 @@ public class MenuFragment extends FragmentCallback {
         // Inflate the layout for this fragment
         return binding.getRoot();
     }
+
+    @Override
+    public void onItemCLick(int position) {
+        switch (position){
+            case 0:
+                replaceFragment(new RegistrationFragment(),true);
+                break;
+            case 1:
+
+                break;
+            case 2:
+                break;
+            case 3:
+               break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+               break;
+            case 7:
+
+                break;
+
+        }
+    }
+    private void replaceFragment(FragmentCallback fragment, boolean allowReturn) {
+        fragment.setCallBackFragment((CallBackFragment) this);
+        if (allowReturn) {
+            getParentFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
+    }
+
 }

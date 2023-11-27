@@ -18,9 +18,10 @@ import java.util.ArrayList;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
     ArrayList<CategoryDomain> CategoryDomains;
-
+    RecyclerViewInterface recyclerViewInterface;
     public CategoryAdapter(ArrayList<CategoryDomain> categoryDomains) {
         CategoryDomains = categoryDomains;
+
     }
 
     @Override
@@ -89,6 +90,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             category_name = itemView.findViewById(R.id.CategoryName);
             category_picture = itemView.findViewById(R.id.CategoryPic);
             mainLayout = itemView.findViewById(R.id.mainLayout);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewInterface != null){
+                        int pos = getAdapterPosition();
+                        if (pos != RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemCLick(pos);
+                        }
+                    }
+                }
+            });
         }
     };
 
