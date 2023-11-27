@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
     ArrayList<CategoryDomain> CategoryDomains;
     RecyclerViewInterface recyclerViewInterface;
-    public CategoryAdapter(ArrayList<CategoryDomain> categoryDomains) {
-        CategoryDomains = categoryDomains;
-
+    public CategoryAdapter(ArrayList<CategoryDomain> categoryDomains, RecyclerViewInterface recyclerViewInterface){
+        this.CategoryDomains = categoryDomains;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @Override

@@ -45,7 +45,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         category.add(new CategoryDomain("Выпечка","category_bakery"));
         category.add(new CategoryDomain("Пицца","category_pizza"));
         category.add(new CategoryDomain("Напитки","category_drinks"));
-        adapter = new CategoryAdapter(category);
+        adapter = new CategoryAdapter(category, this);
         binding.recViewMeals.setAdapter(adapter);
         binding.recViewMeals.addItemDecoration(new MenuItemOffset(20));
     }
@@ -69,7 +69,8 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
     public void onItemCLick(int position) {
         switch (position){
             case 0:
-                replaceFragment(new RegistrationFragment(),true);
+                //replaceFragment(new RegistrationFragment(),true);
+                callBackFragment.changeFragment(new RegistrationFragment(),true);
                 break;
             case 1:
 
@@ -90,19 +91,19 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
 
         }
     }
-    private void replaceFragment(FragmentCallback fragment, boolean allowReturn) {
-        fragment.setCallBackFragment((CallBackFragment) this);
-        if (allowReturn) {
-            getParentFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, fragment)
-                    .addToBackStack(null)
-                    .commit();
-        }
-        getParentFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit();
-    }
+//    private void replaceFragment(FragmentCallback fragment, boolean allowReturn) {
+//        fragment.setCallBackFragment((CallBackFragment) this);
+//        if (allowReturn) {
+//            getParentFragmentManager()
+//                    .beginTransaction()
+//                    .replace(R.id.container, fragment)
+//                    .addToBackStack(null)
+//                    .commit();
+//        }
+//        getParentFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.container, fragment)
+//                .commit();
+//    }
 
 }
