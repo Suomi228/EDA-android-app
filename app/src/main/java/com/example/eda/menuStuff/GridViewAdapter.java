@@ -80,7 +80,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return 0;
+        return gridViewDomains.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
