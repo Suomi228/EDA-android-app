@@ -88,21 +88,21 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
     public void changeFragment(FragmentCallback fragment, boolean allowReturn) {
         replaceFragment(fragment, allowReturn);
     }
-    @Override
-    public void changeFragmentCategory(FragmentCallback fragment, boolean allowReturn) {
-        fragment.setCallBackFragment(this);
-        if (allowReturn) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.category_container, fragment)
-                    .addToBackStack(null)
-                    .commit();
-        }
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.category_container, fragment)
-                .commit();
-    }
+//    @Override
+//    public void changeFragmentCategory(FragmentCallback fragment, boolean allowReturn) {
+//        fragment.setCallBackFragment(this);
+//        if (allowReturn) {
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .replace(R.id.category_container, fragment)
+//                    .addToBackStack(null)
+//                    .commit();
+//        }
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.category_container, fragment)
+//                .commit();
+//    }
 
     @Override
     public void setNavigationVisibility(int state) {

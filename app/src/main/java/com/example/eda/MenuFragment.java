@@ -70,7 +70,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         switch (position){
             case 0:
                 //replaceFragment(new RegistrationFragment(),true);
-                callBackFragment.changeFragmentCategory(new RegistrationFragment(),true);
+                //callBackFragment.changeFragmentCategory(new RegistrationFragment(),true);
                 break;
             case 1:
 

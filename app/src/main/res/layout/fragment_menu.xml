@@ -7,7 +7,6 @@
 
     tools:context=".MenuFragment">
 
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
@@ -31,18 +30,240 @@
 
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
+    <ScrollView
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/category_container"
-        android:name="com.example.eda.LoginFragment"
-        android:layout_width="407dp"
-        android:layout_height="530dp"
-        android:layout_marginBottom="68dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout="@layout/fragment_login">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="160dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What is Lorem Ipsum?"
+                android:textSize="34sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry...like Aldus PageMaker including versions of Lorem Ipsum."
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Why do we use it?"
+                android:layout_marginTop="16dp"
+                android:textSize="34sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry...like Aldus PageMaker including versions of Lorem Ipsum."
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Where can I get some?"
+                android:layout_marginTop="16dp"
+                android:textSize="34sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
 
-    </androidx.fragment.app.FragmentContainerView>
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                /><TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+            android:textSize="14sp"
+
+
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What is Lorem Ipsum?"
+                android:textSize="34sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry...like Aldus PageMaker including versions of Lorem Ipsum."
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Why do we use it?"
+                android:layout_marginTop="16dp"
+                android:textSize="34sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry...like Aldus PageMaker including versions of Lorem Ipsum."
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Where can I get some?"
+                android:layout_marginTop="16dp"
+                android:textSize="34sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                /><TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+            android:textSize="14sp"
+
+
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What is Lorem Ipsum?"
+                android:textSize="34sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry...like Aldus PageMaker including versions of Lorem Ipsum."
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Why do we use it?"
+                android:layout_marginTop="16dp"
+                android:textSize="34sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry...like Aldus PageMaker including versions of Lorem Ipsum."
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Where can I get some?"
+                android:layout_marginTop="16dp"
+                android:textSize="34sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+                android:textSize="14sp"
+
+
+                /><TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="There are many variations of passages of Lorem Ipsum available ... or non-characteristic words etc."
+            android:textSize="14sp"
+
+
+            />
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
