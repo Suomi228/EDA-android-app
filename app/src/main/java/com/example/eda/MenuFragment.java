@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,8 @@ import android.view.ViewGroup;
 import com.example.eda.databinding.FragmentMenuBinding;
 import com.example.eda.menuStuff.CategoryAdapter;
 import com.example.eda.menuStuff.CategoryDomain;
+import com.example.eda.menuStuff.GridViewAdapter;
+import com.example.eda.menuStuff.GridViewDomain;
 import com.example.eda.menuStuff.MenuItemOffset;
 import com.example.eda.menuStuff.RecyclerViewInterface;
 
@@ -25,6 +28,7 @@ import java.util.ArrayList;
 public class MenuFragment extends FragmentCallback implements RecyclerViewInterface {
     FragmentMenuBinding binding;
     RecyclerView.Adapter adapter;
+    RecyclerView.Adapter grid_adapter;
     RecyclerView rec_view_category_list;
 //    @Override
 //    public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,22 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         adapter = new CategoryAdapter(category, this);
         binding.recViewMeals.setAdapter(adapter);
         binding.recViewMeals.addItemDecoration(new MenuItemOffset(20));
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
+        binding.recViewCategory.setLayoutManager(gridLayoutManager);
+
+        ArrayList<GridViewDomain> grid_category = new ArrayList<>();
+        category.add(new CategoryDomain("Салаты","category_salads"));
+        category.add(new CategoryDomain("Первое","category_first_dishes"));
+        category.add(new CategoryDomain("Второе","category_second_dishes"));
+        category.add(new CategoryDomain("Гарниры","category_side_dishes"));
+        category.add(new CategoryDomain("Дессерты","category_deserts"));
+        category.add(new CategoryDomain("Выпечка","category_bakery"));
+        category.add(new CategoryDomain("Пицца","category_pizza"));
+        category.add(new CategoryDomain("Напитки","category_drinks"));
+        grid_adapter = new GridViewAdapter(grid_category, this);
+        binding.recViewCategory.setAdapter(grid_adapter);
+        binding.recViewCategory.addItemDecoration(new MenuItemOffset(20));
     }
 
     @Override
