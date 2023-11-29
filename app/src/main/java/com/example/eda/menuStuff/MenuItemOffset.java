@@ -8,16 +8,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MenuItemOffset extends RecyclerView.ItemDecoration {
     private int offset;
+    private int onset;
 
-    public MenuItemOffset(int offset) {
+    public MenuItemOffset(int offset, int onset) {
         this.offset = offset;
+        this.onset = onset;
     }
 
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-        outRect.right = offset;
-        outRect.left = offset;
+        outRect.right = onset;
+        outRect.left = onset;
         outRect.top = offset;
         outRect.bottom = offset;
     }

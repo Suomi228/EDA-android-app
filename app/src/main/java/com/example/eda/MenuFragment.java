@@ -51,7 +51,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         category.add(new CategoryDomain("Напитки","category_drinks"));
         adapter = new CategoryAdapter(category, this);
         binding.recViewMeals.setAdapter(adapter);
-        binding.recViewMeals.addItemDecoration(new MenuItemOffset(20));
+        binding.recViewMeals.addItemDecoration(new MenuItemOffset(20,20));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         binding.recViewCategory.setLayoutManager(gridLayoutManager);
@@ -67,7 +67,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         grid_category.add(new GridViewDomain("Напитки","category_drinks"));
         grid_adapter = new GridViewAdapter(grid_category, this);
         binding.recViewCategory.setAdapter(grid_adapter);
-        binding.recViewCategory.addItemDecoration(new MenuItemOffset(20));
+        binding.recViewCategory.addItemDecoration(new MenuItemOffset(20,100));
     }
 
     @Override
