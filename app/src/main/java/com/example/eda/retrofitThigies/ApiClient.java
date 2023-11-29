@@ -15,7 +15,7 @@ public class ApiClient {
         this.context = context;
     }
 
-    OkHttpClient client = new OkHttpClient.Builder()
+    static OkHttpClient client = new OkHttpClient.Builder()
             .addInterceptor(new AuthInterceptor(BearerTokenManager.getToken()))
             .build();
     public static Retrofit getClient(){
@@ -23,6 +23,7 @@ public class ApiClient {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .client(client)
                     .build();
         return retrofit;
     }
