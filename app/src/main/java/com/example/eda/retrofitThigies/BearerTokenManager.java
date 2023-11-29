@@ -12,7 +12,6 @@ public class BearerTokenManager {
     private Context context;
     private static final String EDA_APP_PREFS = "EdaAppPrefs";
     private static String token = "";
-
     private static final String SECRET_KEY = ("9c56bbb2442aa20f7d48ce5ba13b75c38000266334fb008387322a8a8ff24944").toUpperCase();
     public BearerTokenManager(Context context) {
         this.context = context;
