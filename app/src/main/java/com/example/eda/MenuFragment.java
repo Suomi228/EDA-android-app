@@ -57,14 +57,14 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         binding.recViewCategory.setLayoutManager(gridLayoutManager);
 
         ArrayList<GridViewDomain> grid_category = new ArrayList<>();
-        category.add(new CategoryDomain("Салаты","category_salads"));
-        category.add(new CategoryDomain("Первое","category_first_dishes"));
-        category.add(new CategoryDomain("Второе","category_second_dishes"));
-        category.add(new CategoryDomain("Гарниры","category_side_dishes"));
-        category.add(new CategoryDomain("Дессерты","category_deserts"));
-        category.add(new CategoryDomain("Выпечка","category_bakery"));
-        category.add(new CategoryDomain("Пицца","category_pizza"));
-        category.add(new CategoryDomain("Напитки","category_drinks"));
+        grid_category.add(new GridViewDomain("Салаты","category_salads"));
+        grid_category.add(new GridViewDomain("Первое","category_first_dishes"));
+        grid_category.add(new GridViewDomain("Второе","category_second_dishes"));
+        grid_category.add(new GridViewDomain("Гарниры","category_side_dishes"));
+        grid_category.add(new GridViewDomain("Дессерты","category_deserts"));
+        grid_category.add(new GridViewDomain("Выпечка","category_bakery"));
+        grid_category.add(new GridViewDomain("Пицца","category_pizza"));
+        grid_category.add(new GridViewDomain("Напитки","category_drinks"));
         grid_adapter = new GridViewAdapter(grid_category, this);
         binding.recViewCategory.setAdapter(grid_adapter);
         binding.recViewCategory.addItemDecoration(new MenuItemOffset(20));
