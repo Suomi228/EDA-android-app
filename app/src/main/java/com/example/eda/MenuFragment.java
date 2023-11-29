@@ -13,19 +13,33 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.eda.databinding.FragmentMenuBinding;
 import com.example.eda.menuStuff.CategoryAdapter;
 import com.example.eda.menuStuff.CategoryDomain;
 import com.example.eda.menuStuff.MenuItemOffset;
 import com.example.eda.menuStuff.RecyclerViewInterface;
+import com.example.eda.retrofitThigies.ApiClient;
+import com.example.eda.retrofitThigies.ApiService;
+import com.example.eda.retrofitThigies.models.GetFoodResponse;
+import com.example.eda.retrofitThigies.models.MenuItemEntity;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MenuFragment extends FragmentCallback implements RecyclerViewInterface {
     FragmentMenuBinding binding;
     RecyclerView.Adapter adapter;
     RecyclerView rec_view_category_list;
+
+    List<MenuItemEntity> menuItemEntityList;
 //    @Override
 //    public void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
@@ -36,25 +50,20 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         binding.recViewMeals.setLayoutManager(linearLayoutManager);
 
-        ArrayList<CategoryDomain> category = new ArrayList<>();
-        category.add(new CategoryDomain("Салаты","category_salads"));
-        category.add(new CategoryDomain("Первое","category_first_dishes"));
-        category.add(new CategoryDomain("Второе","category_second_dishes"));
-        category.add(new CategoryDomain("Гарниры","category_side_dishes"));
-        category.add(new CategoryDomain("Дессерты","category_deserts"));
-        category.add(new CategoryDomain("Выпечка","category_bakery"));
-        category.add(new CategoryDomain("Пицца","category_pizza"));
-        category.add(new CategoryDomain("Напитки","category_drinks"));
-        adapter = new CategoryAdapter(category, this);
+        ArrayList<MenuItemEntity> category = new ArrayList<>(menuItemEntityList);
+        //category.add(new MenuItemEntity("Салаты","category_salads"));
+        adapter = new CategoryAdapter(category, this, getContext());
         binding.recViewMeals.setAdapter(adapter);
         binding.recViewMeals.addItemDecoration(new MenuItemOffset(20));
+
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        recyclerViewCategoryList();  // Moved from onCreate to onViewCreated
+        getMenuItems();
+        //recyclerViewCategoryList();  // перенес в метод getMenuItems()
     }
 
     @Override
@@ -91,19 +100,31 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
 
         }
     }
-//    private void replaceFragment(FragmentCallback fragment, boolean allowReturn) {
-//        fragment.setCallBackFragment((CallBackFragment) this);
-//        if (allowReturn) {
-//            getParentFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.container, fragment)
-//                    .addToBackStack(null)
-//                    .commit();
-//        }
-//        getParentFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.container, fragment)
-//                .commit();
-//    }
+
+    public void getMenuItems() {
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        Call<List<MenuItemEntity>> callLogin = apiService.getFood();
+
+        callLogin.enqueue(new Callback<List<MenuItemEntity>>() {
+            @Override
+            public void onResponse(Call<List<MenuItemEntity>> call, Response<List<MenuItemEntity>> response) {
+                if (response.isSuccessful()) {
+                    menuItemEntityList = response.body();
+                    recyclerViewCategoryList();
+                } else {
+                    Toast.makeText(getContext(), "Неверный логин или пароль. " + response.code(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MenuItemEntity>> call, Throwable t) {
+                Toast.makeText(getContext(), "Ошибка подключения к серверу." + t.toString(),
+                        Toast.LENGTH_SHORT).show();
+                throw new RuntimeException("Ошибка подключения к серверу." + t.toString());
+            }
+
+        });
+    }
 
 }
