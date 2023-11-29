@@ -7,4 +7,5 @@ public class FragmentCallback extends Fragment {
     public void setCallBackFragment(CallBackFragment callBackFragment){
         this.callBackFragment = callBackFragment;
     }
+
 }
