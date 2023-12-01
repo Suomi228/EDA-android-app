@@ -5,6 +5,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+
+
     <ImageView
         android:id="@+id/GridPic"
         android:layout_width="69dp"
@@ -26,4 +28,32 @@
         app:layout_constraintEnd_toEndOf="@+id/GridPic"
         app:layout_constraintStart_toStartOf="@+id/GridPic"
         app:layout_constraintTop_toBottomOf="@+id/GridPic" />
+    <TextView
+        android:id="@+id/GridFee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="45dp"
+        android:text="100"
+        app:layout_constraintEnd_toEndOf="@+id/GridName"
+        app:layout_constraintStart_toStartOf="@+id/GridName"
+        app:layout_constraintTop_toBottomOf="@+id/GridName" />
+    <TextView
+        android:id="@+id/GridRubles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text=" рублей"
+
+        app:layout_constraintStart_toEndOf="@+id/GridFee"
+        app:layout_constraintTop_toBottomOf="@+id/GridName" />
+    <TextView
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:background="@drawable/background_icons"
+
+        app:layout_constraintStart_toEndOf="@+id/GridRubles"
+        app:layout_constraintTop_toBottomOf="@+id/GridName"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

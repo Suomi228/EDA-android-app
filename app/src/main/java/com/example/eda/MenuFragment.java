@@ -53,18 +53,21 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         binding.recViewMeals.setAdapter(adapter);
         binding.recViewMeals.addItemDecoration(new MenuItemOffset(20,20));
 
+
+    }
+    private void recyclerViewAllFood(){
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         binding.recViewCategory.setLayoutManager(gridLayoutManager);
 
         ArrayList<GridViewDomain> grid_category = new ArrayList<>();
-        grid_category.add(new GridViewDomain("Салаты","category_salads"));
-        grid_category.add(new GridViewDomain("Первое","category_first_dishes"));
-        grid_category.add(new GridViewDomain("Второе","category_second_dishes"));
-        grid_category.add(new GridViewDomain("Гарниры","category_side_dishes"));
-        grid_category.add(new GridViewDomain("Дессерты","category_deserts"));
-        grid_category.add(new GridViewDomain("Выпечка","category_bakery"));
-        grid_category.add(new GridViewDomain("Пицца","category_pizza"));
-        grid_category.add(new GridViewDomain("Напитки","category_drinks"));
+        grid_category.add(new GridViewDomain("Салаты","category_salads",100));
+        grid_category.add(new GridViewDomain("Первое","category_first_dishes",120));
+        grid_category.add(new GridViewDomain("Второе","category_second_dishes",90));
+        grid_category.add(new GridViewDomain("Гарниры","category_side_dishes",75));
+        grid_category.add(new GridViewDomain("Дессерты","category_deserts",80));
+        grid_category.add(new GridViewDomain("Выпечка","category_bakery",56));
+        grid_category.add(new GridViewDomain("Пицца","category_pizza",150));
+        grid_category.add(new GridViewDomain("Напитки","category_drinks",35));
         grid_adapter = new GridViewAdapter(grid_category, this);
         binding.recViewCategory.setAdapter(grid_adapter);
         binding.recViewCategory.addItemDecoration(new MenuItemOffset(20,100));
@@ -74,7 +77,8 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerViewCategoryList();  // Moved from onCreate to onViewCreated
+        recyclerViewCategoryList();
+        recyclerViewAllFood();// Moved from onCreate to onViewCreated
     }
 
     @Override

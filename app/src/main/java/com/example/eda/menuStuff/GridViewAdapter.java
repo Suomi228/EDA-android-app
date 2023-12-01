@@ -35,6 +35,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.grid_name.setText(gridViewDomains.get(position).getTitle());
+        holder.GridFee.setText(String.valueOf(gridViewDomains.get(position).getFee()));
         String picUrl = "";
         switch (position){
             case 0:
@@ -84,7 +85,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView grid_name;
+        TextView grid_name, GridFee, add_btn;
         ImageView grid_picture;
         ConstraintLayout gridLayout;
         public ViewHolder(@NonNull View itemView){
@@ -92,6 +93,8 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
             grid_name = itemView.findViewById(R.id.GridName);
             grid_picture = itemView.findViewById(R.id.GridPic);
             gridLayout = itemView.findViewById(R.id.gridLayout);
+            GridFee = itemView.findViewById(R.id.GridFee);
+            add_btn = itemView.findViewById(R.id.add_button);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
