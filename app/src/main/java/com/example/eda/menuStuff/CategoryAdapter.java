@@ -8,19 +8,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.eda.R;
+import com.example.eda.retrofitThigies.ApiClient;
+import com.example.eda.retrofitThigies.models.Category;
 
 import java.util.ArrayList;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
-    ArrayList<CategoryDomain> CategoryDomains;
+    ArrayList<Category> category;
     RecyclerViewInterface recyclerViewInterface;
-    public CategoryAdapter(ArrayList<CategoryDomain> categoryDomains, RecyclerViewInterface recyclerViewInterface){
-        this.CategoryDomains = categoryDomains;
+    public CategoryAdapter(ArrayList<Category> category, RecyclerViewInterface recyclerViewInterface){
+        this.category = category;
         this.recyclerViewInterface = recyclerViewInterface;
     }
 
@@ -33,52 +34,55 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.category_name.setText(CategoryDomains.get(position).getTitle());
-        String picUrl = "";
-        switch (position){
-            case 0:
-                picUrl = "category_salads";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-                break;
-            case 1:
-                picUrl = "category_first_dishes";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-                break;
-            case 2:
-                picUrl = "category_second_dishes";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-                break;
-            case 3:
-                picUrl = "category_side_dishes";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-                break;
-            case 4:
-                picUrl = "category_deserts";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-                break;
-            case 5:
-                picUrl = "category_bakery";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-                break;
-            case 6:
-                picUrl = "category_pizza";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-                break;
-            case 7:
-                picUrl = "category_drinks";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-                break;
+        holder.category_name.setText(category.get(position).getCategoryName());
+//        String picUrl = "";
+//        switch (position){
+//            case 0:
+//                picUrl = "category_salads";
+//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
+//                break;
+//            case 1:
+//                picUrl = "category_first_dishes";
+//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
+//                break;
+//            case 2:
+//                picUrl = "category_second_dishes";
+//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
+//                break;
+//            case 3:
+//                picUrl = "category_side_dishes";
+//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
+//                break;
+//            case 4:
+//                picUrl = "category_deserts";
+//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
+//                break;
+//            case 5:
+//                picUrl = "category_bakery";
+//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
+//                break;
+//            case 6:
+//                picUrl = "category_pizza";
+//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
+//                break;
+//            case 7:
+//                picUrl = "category_drinks";
+//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
+//                break;
+//
+//        }
 
-        }
-        int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(picUrl, "drawable", holder.itemView.getContext().getPackageName());
+        //int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(picUrl, "drawable", holder.itemView.getContext().getPackageName());
         Glide.with(holder.itemView.getContext())
-                .load(drawableResourceId)
+                .load(ApiClient.PICTURES_URL + "categoriesPng/" +  category.get(position).getCategory() + ".png")
+                //.load("http://95.165.91.211:8081/files/categories/category_drinks.svg")
                 .into(holder.category_picture);
+                //.into(new SvgSoftwareLayerSetter<>(holder.category_picture).getView());
     }
 
     @Override
     public int getItemCount() {
-        return CategoryDomains.size();
+        return category.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

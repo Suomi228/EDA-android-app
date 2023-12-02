@@ -1,5 +1,6 @@
 package com.example.eda.retrofitThigies;
 
+import com.example.eda.retrofitThigies.models.Category;
 import com.example.eda.retrofitThigies.models.GetFoodResponse;
 import com.example.eda.retrofitThigies.models.MenuItemEntity;
 import com.example.eda.retrofitThigies.models.UserLoginRequest;
@@ -21,6 +22,9 @@ public interface ApiService {
     @POST("auth/authentication")
     Call<UserRegisterOrLoginResponse> loginUser(@Body UserLoginRequest student);
 
-    @GET("staff/getFood")
+    @GET("user/getFood")
     Call<List<MenuItemEntity>> getFood();
+
+    @GET("orders/getCategories")
+    Call<List<Category>> getCategories();
 }

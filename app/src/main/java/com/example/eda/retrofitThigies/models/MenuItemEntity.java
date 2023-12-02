@@ -6,13 +6,15 @@ public class MenuItemEntity{
     private double price;
     private String name;
     private String pictureUrl;
+    private Category categoryEntity;
 
-    public MenuItemEntity(int id, int quantity, double price, String name, String pictureUrl) {
+    public MenuItemEntity(int id, int quantity, double price, String name, String pictureUrl, Category categoryEntity) {
         this.id = id;
         this.quantity = quantity;
         this.price = price;
         this.name = name;
         this.pictureUrl = pictureUrl;
+        this.categoryEntity = categoryEntity;
     }
 
     public int getId() {
@@ -53,6 +55,14 @@ public class MenuItemEntity{
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public Category getCategoryEntity() {
+        return categoryEntity;
+    }
+
+    public void setCategoryEntity(Category categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 
     @Override
