@@ -96,7 +96,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                     if (recyclerViewInterface != null){
                         int pos = getAdapterPosition();
                         if (pos != RecyclerView.NO_POSITION){
-                            recyclerViewInterface.onItemCLick(pos);
+                            recyclerViewInterface.onCategoryCLick(pos);
                         }
                     }
                 }

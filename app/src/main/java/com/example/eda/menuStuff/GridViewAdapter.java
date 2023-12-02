@@ -94,18 +94,19 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
             grid_picture = itemView.findViewById(R.id.GridPic);
             gridLayout = itemView.findViewById(R.id.gridLayout);
             GridFee = itemView.findViewById(R.id.GridFee);
-            add_btn = itemView.findViewById(R.id.add_button);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (recyclerViewInterface != null){
                         int pos = getAdapterPosition();
                         if (pos != RecyclerView.NO_POSITION){
-                            recyclerViewInterface.onItemCLick(pos);
+                            recyclerViewInterface.onFoodCLick(pos);
+
                         }
                     }
                 }
             });
         }
-    };
+    }
 }
