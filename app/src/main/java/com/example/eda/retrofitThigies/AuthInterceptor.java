@@ -7,7 +7,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class AuthInterceptor implements Interceptor {
-    private String authToken;
+    private static String authToken;
 
     public AuthInterceptor(String authToken) {
         this.authToken = authToken;
@@ -20,5 +20,9 @@ public class AuthInterceptor implements Interceptor {
                 .header("Authorization", "Bearer " + authToken);
         Request newRequest = builder.build();
         return chain.proceed(newRequest);
+    }
+
+    public static String getAuthToken() {
+        return authToken;
     }
 }

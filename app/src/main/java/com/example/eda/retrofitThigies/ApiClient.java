@@ -22,7 +22,10 @@ public class ApiClient {
             .addInterceptor(new AuthInterceptor(BearerTokenManager.getToken()))
             .build();
     public static Retrofit getClient(){
-        if (retrofit == null)
+
+        int i = client.interceptors().size();
+
+        if (retrofit == null || client.interceptors().size() < 1)
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())

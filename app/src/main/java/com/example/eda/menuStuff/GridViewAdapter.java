@@ -76,7 +76,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
 //        int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(picUrl, "drawable", holder.itemView.getContext().getPackageName());
 
         //throw new RuntimeException(ApiClient.PICTURES_URL + menuItemEntities.get(position).getCategoryEntity().getCategory() + "/" + menuItemEntities.get(position).getPictureUrl() + ".png");
-            Glide.with(holder.itemView.getContext())
+        Glide.with(holder.itemView.getContext())
                     .load(ApiClient.PICTURES_URL + menuItemEntities.get(position).getCategoryEntity().getCategory() + "/" + menuItemEntities.get(position).getPictureUrl() + ".png")
                     .into(holder.grid_picture);
     }

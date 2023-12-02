@@ -126,7 +126,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
 
         grid_adapter = new GridViewAdapter(menuItemEntities, MenuFragment.this);
         binding.recViewCategory.setAdapter(grid_adapter);
-        binding.recViewCategory.addItemDecoration(new MenuItemOffset(20,100));
+        binding.recViewCategory.addItemDecoration(new MenuItemOffset(20,50));
 
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<List<MenuItemEntity>> callMenu = apiService.getFood();
@@ -141,6 +141,10 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
                     menuItemEntities.clear();
                     menuItemEntities.addAll(menuItemEntityList);
                     grid_adapter.notifyDataSetChanged();
+                }
+                else {
+                    Toast.makeText(getContext(), "Что-то пошло не так." + response.code(),
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
