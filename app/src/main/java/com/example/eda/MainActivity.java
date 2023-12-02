@@ -32,10 +32,12 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
         } else
             replaceFragment(new LoginFragment(), false);
 
-        ViewGroup.LayoutParams params = binding.container.getLayoutParams();
+
+        //todo разобраться че не так я отступами контейнера фрагментов
+        //ViewGroup.LayoutParams params = binding.container.getLayoutParams();
         // binding.container.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
-        params.height = ViewGroup.LayoutParams.MATCH_PARENT;
-        binding.container.setLayoutParams(params);
+        //params.height = 0;
+        // binding.container.setLayoutParams(params);
         binding.bottomNavigationView.setVisibility(View.GONE);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.home_item) {

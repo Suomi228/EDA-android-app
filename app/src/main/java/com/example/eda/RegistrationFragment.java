@@ -24,7 +24,7 @@ public class RegistrationFragment extends FragmentCallback {
 
     //    TextInputEditText edit_text_email, edit_text_password, edit_text_confirm;
 //    Button button_reg;
-    FirebaseAuth mAuth;
+    //FirebaseAuth mAuth;
     //    ProgressBar progress_bar;
 //    TextView text_view;
     CallBackFragment callBackFragment;
@@ -42,7 +42,7 @@ public class RegistrationFragment extends FragmentCallback {
                              Bundle savedInstanceState) {
         binding = FragmentRegistrationBinding.inflate(inflater, container, false);
         //View view = ;
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
 //        edit_text_email = view.findViewById(R.id.email);
 //        edit_text_password = view.findViewById(R.id.password);
 //        button_reg = view.findViewById(R.id.btn_register);

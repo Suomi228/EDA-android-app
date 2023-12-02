@@ -110,7 +110,7 @@ public class LoginFragment extends FragmentCallback {
                                 bearerTokenManager.saveTokenToPref(response.body().getToken());
                                 HomeFragment homeFragment = new HomeFragment();
                                 homeFragment.setCallBackFragment(callBackFragment);
-                                callBackFragment.changeFragment(homeFragment, true);
+                                callBackFragment.changeFragment(homeFragment, false);
                             }
                         }else {
                             Toast.makeText(getContext(), "Неверный логин или пароль.",

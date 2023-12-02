@@ -36,7 +36,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.grid_name.setText(menuItemEntities.get(position).getName());
-        holder.GridFee.setText(String.valueOf(menuItemEntities.get(position).getPrice()));
+        holder.GridFee.setText(String.valueOf((int) menuItemEntities.get(position).getPrice()));
         //        String picUrl = "";
 //        switch (position){
 //            case 0:
