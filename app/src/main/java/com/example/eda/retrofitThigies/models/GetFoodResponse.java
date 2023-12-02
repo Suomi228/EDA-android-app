@@ -1,7 +1,7 @@
 package com.example.eda.retrofitThigies.models;
 
 import java.util.List;
-
+@Deprecated
 public class GetFoodResponse {
     List<MenuItemEntity> menuItems;
 
@@ -23,7 +23,7 @@ public class GetFoodResponse {
 //        return menuItemEntities;
 //    }
 
-    public class MenuItemEntity{
+    private class MenuItemEntity{
         private int id;
         private int quantity;
         private double price;

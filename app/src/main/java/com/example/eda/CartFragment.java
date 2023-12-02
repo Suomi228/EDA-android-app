@@ -15,6 +15,7 @@ import com.example.eda.retrofitThigies.ApiClient;
 import com.example.eda.retrofitThigies.ApiService;
 import com.example.eda.retrofitThigies.BearerTokenManager;
 import com.example.eda.retrofitThigies.models.GetFoodResponse;
+import com.example.eda.retrofitThigies.models.MenuItemEntity;
 import com.example.eda.retrofitThigies.models.UserLoginRequest;
 import com.example.eda.retrofitThigies.models.UserRegisterOrLoginResponse;
 
@@ -45,18 +46,18 @@ public class CartFragment extends FragmentCallback {
             public void onClick(View v) {
 
                 ApiService apiService = ApiClient.getClient().create(ApiService.class);
-                Call<List<GetFoodResponse.MenuItemEntity>> callLogin = apiService.getFood();
+                Call<List<MenuItemEntity>> callLogin = apiService.getFood();
 
-                callLogin.enqueue(new Callback<List<GetFoodResponse.MenuItemEntity>>() {
+                callLogin.enqueue(new Callback<List<MenuItemEntity>>() {
                     @Override
-                    public void onResponse(Call<List<GetFoodResponse.MenuItemEntity>> call, Response<List<GetFoodResponse.MenuItemEntity>> response) {
+                    public void onResponse(Call<List<MenuItemEntity>> call, Response<List<MenuItemEntity>> response) {
                         if (response.isSuccessful()) {
 
-                            List<GetFoodResponse.MenuItemEntity> menuItemEntityList = response.body();
+                            List<MenuItemEntity> menuItemEntityList = response.body();
 
                             String s ="";
 
-                            for(GetFoodResponse.MenuItemEntity menuItemEntity : menuItemEntityList){
+                            for(MenuItemEntity menuItemEntity : menuItemEntityList){
                                 s += menuItemEntity.toString() + "\n";
                             }
 
@@ -69,7 +70,7 @@ public class CartFragment extends FragmentCallback {
                     }
 
                     @Override
-                    public void onFailure(Call<List<GetFoodResponse.MenuItemEntity>> call, Throwable t) {
+                    public void onFailure(Call<List<MenuItemEntity>> call, Throwable t) {
                         Toast.makeText(getContext(), "Ошибка подключения к серверу." + t.toString(),
                                 Toast.LENGTH_SHORT).show();
                         throw new RuntimeException("Ошибка подключения к серверу." + t.toString());

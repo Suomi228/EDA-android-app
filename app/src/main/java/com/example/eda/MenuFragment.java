@@ -28,15 +28,29 @@ import com.example.eda.menuStuff.GridViewAdapter;
 import com.example.eda.menuStuff.GridViewDomain;
 import com.example.eda.menuStuff.MenuItemOffset;
 import com.example.eda.menuStuff.RecyclerViewInterface;
+import com.example.eda.retrofitThigies.ApiClient;
+import com.example.eda.retrofitThigies.ApiService;
+import com.example.eda.retrofitThigies.models.Category;
+import com.example.eda.retrofitThigies.models.MenuItemEntity;
+import com.example.eda.retrofitThigies.models.UserLoginRequest;
+import com.example.eda.retrofitThigies.models.UserRegisterOrLoginResponse;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class MenuFragment extends FragmentCallback implements RecyclerViewInterface {
     FragmentMenuBinding binding;
     RecyclerView.Adapter adapter;
     RecyclerView.Adapter grid_adapter;
 
+    ArrayList<Category> category;
+
+    ArrayList<MenuItemEntity> menuItemEntities;
 
     GridViewDomain object;
     RecyclerView rec_view_category_list;
@@ -52,37 +66,83 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         binding.recViewMeals.setLayoutManager(linearLayoutManager);
 
-        ArrayList<CategoryDomain> category = new ArrayList<>();
-        category.add(new CategoryDomain("Салаты","category_salads"));
-        category.add(new CategoryDomain("Первое","category_first_dishes"));
-        category.add(new CategoryDomain("Второе","category_second_dishes"));
-        category.add(new CategoryDomain("Гарниры","category_side_dishes"));
-        category.add(new CategoryDomain("Дессерты","category_deserts"));
-        category.add(new CategoryDomain("Выпечка","category_bakery"));
-        category.add(new CategoryDomain("Пицца","category_pizza"));
-        category.add(new CategoryDomain("Напитки","category_drinks"));
-        adapter = new CategoryAdapter(category, this);
-        binding.recViewMeals.setAdapter(adapter);
-        binding.recViewMeals.addItemDecoration(new MenuItemOffset(20,20));
+
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        Call<List<Category>> callCategories = apiService.getCategories();
+
+        callCategories.enqueue(new Callback<List<Category>>() {
+            @Override
+            public void onResponse(Call<List<Category>> call, retrofit2.Response<List<Category>> response) {
+                if (response.isSuccessful()) {
+                    List<Category> categoryList = response.body();
+                    category = new ArrayList<>(categoryList);
+                    adapter = new CategoryAdapter(category, MenuFragment.this);
+                    binding.recViewMeals.setAdapter(adapter);
+                    binding.recViewMeals.addItemDecoration(new MenuItemOffset(20,20));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+            }
+        }
+        );
+        //ArrayList<CategoryDomain> category = new ArrayList<>();
+//        category.add(new CategoryDomain("Салаты","category_salads"));
+//        category.add(new CategoryDomain("Первое","category_first_dishes"));
+//        category.add(new CategoryDomain("Второе","category_second_dishes"));
+//        category.add(new CategoryDomain("Гарниры","category_side_dishes"));
+//        category.add(new CategoryDomain("Дессерты","category_deserts"));
+//        category.add(new CategoryDomain("Выпечка","category_bakery"));
+//        category.add(new CategoryDomain("Пицца","category_pizza"));
+//        category.add(new CategoryDomain("Напитки","category_drinks"));
+//        adapter = new CategoryAdapter(category, this);
+//        binding.recViewMeals.setAdapter(adapter);
+//        binding.recViewMeals.addItemDecoration(new MenuItemOffset(20,20));
 
 
     }
     private void recyclerViewAllFood(){
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         binding.recViewCategory.setLayoutManager(gridLayoutManager);
+//
+//        ArrayList<GridViewDomain> grid_category = new ArrayList<>();
+//        grid_category.add(new GridViewDomain("Салаты","category_salads",100));
+//        grid_category.add(new GridViewDomain("Первое","category_first_dishes",120));
+//        grid_category.add(new GridViewDomain("Второе","category_second_dishes",90));
+//        grid_category.add(new GridViewDomain("Гарниры","category_side_dishes",75));
+//        grid_category.add(new GridViewDomain("Дессерты","category_deserts",80));
+//        grid_category.add(new GridViewDomain("Выпечка","category_bakery",56));
+//        grid_category.add(new GridViewDomain("Пицца","category_pizza",150));
+//        grid_category.add(new GridViewDomain("Напитки","category_drinks",35));
 
-        ArrayList<GridViewDomain> grid_category = new ArrayList<>();
-        grid_category.add(new GridViewDomain("Салаты","category_salads",100));
-        grid_category.add(new GridViewDomain("Первое","category_first_dishes",120));
-        grid_category.add(new GridViewDomain("Второе","category_second_dishes",90));
-        grid_category.add(new GridViewDomain("Гарниры","category_side_dishes",75));
-        grid_category.add(new GridViewDomain("Дессерты","category_deserts",80));
-        grid_category.add(new GridViewDomain("Выпечка","category_bakery",56));
-        grid_category.add(new GridViewDomain("Пицца","category_pizza",150));
-        grid_category.add(new GridViewDomain("Напитки","category_drinks",35));
-        grid_adapter = new GridViewAdapter(grid_category, this);
-        binding.recViewCategory.setAdapter(grid_adapter);
-        binding.recViewCategory.addItemDecoration(new MenuItemOffset(20,100));
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        Call<List<MenuItemEntity>> callMenu = apiService.getFood();
+
+        callMenu.enqueue(new Callback<List<MenuItemEntity>>() {
+            @Override
+            public void onResponse(Call<List<MenuItemEntity>> call, retrofit2.Response<List<MenuItemEntity>> response) {
+                if (response.isSuccessful()) {
+                    List<MenuItemEntity> menuItemEntityList = response.body();
+                    //menuItemEntityList.sort((MenuItemEntity m1, MenuItemEntity m2) -> m1.getId().compareTo(m2.getId()));
+                    //todo сделать сортировку по id
+                    menuItemEntities = new ArrayList<>(menuItemEntityList);
+                    grid_adapter = new GridViewAdapter(menuItemEntities, MenuFragment.this);
+                    binding.recViewCategory.setAdapter(grid_adapter);
+                    binding.recViewCategory.addItemDecoration(new MenuItemOffset(20,100));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MenuItemEntity>> call, Throwable t) {
+                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+//        grid_adapter = new GridViewAdapter(grid_category, this);
+//        binding.recViewCategory.setAdapter(grid_adapter);
+//        binding.recViewCategory.addItemDecoration(new MenuItemOffset(20,100));
     }
 
     @Override
@@ -134,53 +194,56 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         ImageView productPic = order_menu.findViewById(R.id.ProductPic);
         TextView productFee = order_menu.findViewById(R.id.ProductFee);
         TextView  productName = order_menu.findViewById(R.id.ProductName);
-        String picUrl = "";
-        switch (position){
-            case 0:
-                picUrl = "category_salads";
-                productName.setText("Салаты");
-                productFee.setText("100");
-                break;
-            case 1:
-                picUrl = "category_first_dishes";
-                productName.setText("Первое");
-                productFee.setText("135");
-                break;
-            case 2:
-                picUrl = "category_second_dishes";
-                productName.setText("Второе");
-                productFee.setText("150");
-                break;
-            case 3:
-                picUrl = "category_side_dishes";
-                productName.setText("Гарниры");
-                productFee.setText("50");
-                break;
-            case 4:
-                picUrl = "category_deserts";
-                productName.setText("Дессерты");
-                productFee.setText("89");
-                break;
-            case 5:
-                picUrl = "category_bakery";
-                productName.setText("Выпечка");
-                productFee.setText("80");
-                break;
-            case 6:
-                picUrl = "category_pizza";
-                productName.setText("Пицца");
-                productFee.setText("200");
-                break;
-            case 7:
-                picUrl = "category_drinks";
-                productName.setText("Напитки");
-                productFee.setText("35");
-                break;
+//        String picUrl = "";
+//        switch (position){
+//            case 0:
+//                picUrl = "category_salads";
+//                productName.setText("Салаты");
+//                productFee.setText("100");
+//                break;
+//            case 1:
+//                picUrl = "category_first_dishes";
+//                productName.setText("Первое");
+//                productFee.setText("135");
+//                break;
+//            case 2:
+//                picUrl = "category_second_dishes";
+//                productName.setText("Второе");
+//                productFee.setText("150");
+//                break;
+//            case 3:
+//                picUrl = "category_side_dishes";
+//                productName.setText("Гарниры");
+//                productFee.setText("50");
+//                break;
+//            case 4:
+//                picUrl = "category_deserts";
+//                productName.setText("Дессерты");
+//                productFee.setText("89");
+//                break;
+//            case 5:
+//                picUrl = "category_bakery";
+//                productName.setText("Выпечка");
+//                productFee.setText("80");
+//                break;
+//            case 6:
+//                picUrl = "category_pizza";
+//                productName.setText("Пицца");
+//                productFee.setText("200");
+//                break;
+//            case 7:
+//                picUrl = "category_drinks";
+//                productName.setText("Напитки");
+//                productFee.setText("35");
+//                break;
+//
+//        }
+//        int drawableResourceId = productPic.getContext().getResources().getIdentifier(picUrl, "drawable", productPic.getContext().getPackageName());
 
-        }
-        int drawableResourceId = productPic.getContext().getResources().getIdentifier(picUrl, "drawable", productPic.getContext().getPackageName());
+        productFee.setText(Integer.toString((int) menuItemEntities.get(position).getPrice()) + " ₽");
+        productName.setText(menuItemEntities.get(position).getName());
         Glide.with(productPic.getContext())
-                .load(drawableResourceId)
+                .load(ApiClient.PICTURES_URL + menuItemEntities.get(position).getCategoryEntity().getCategory() + "/" + menuItemEntities.get(position).getPictureUrl() + ".png")
                 .into(productPic);
 
         builder.setView(order_menu);
