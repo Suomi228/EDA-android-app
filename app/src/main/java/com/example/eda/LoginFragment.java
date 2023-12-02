@@ -49,13 +49,13 @@ public class LoginFragment extends FragmentCallback {
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if ((currentUser != null) && currentUser.isEmailVerified()) {
-            if (callBackFragment != null) {
-                callBackFragment.changeFragment(new HomeFragment(), true);
-
-            }
-        }
+        //FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if ((currentUser != null) && currentUser.isEmailVerified()) {
+//            if (callBackFragment != null) {
+//                callBackFragment.changeFragment(new HomeFragment(), true);
+//
+//            }
+//        }
     }
 
     @Override
@@ -64,7 +64,7 @@ public class LoginFragment extends FragmentCallback {
         binding = FragmentLoginBinding.inflate(inflater,container,false);
         View ContainerView = binding.getRoot();
         dialogForgotBinding = DialogForgotBinding.inflate(inflater, container, false);
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
         //text_viewRegistretion = ContainerView.findViewById(R.id.registerNow);
         //edit_text_email = ContainerView.findViewById(R.id.email);
         //edit_text_password = ContainerView.findViewById(R.id.password);
@@ -95,7 +95,7 @@ public class LoginFragment extends FragmentCallback {
                     return;
                 }
 
-                ApiService apiService = ApiClient.getClient().create(ApiService.class);
+                ApiService apiService = ApiClient.getClientWithoutInterceptor().create(ApiService.class);
                 UserLoginRequest userLoginRequest = new UserLoginRequest(email, password);
                 Call<UserRegisterOrLoginResponse> callLogin = apiService.loginUser(userLoginRequest);
 

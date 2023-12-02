@@ -41,7 +41,7 @@ public class RegistrationFragment extends FragmentCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentRegistrationBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        //View view = ;
         mAuth = FirebaseAuth.getInstance();
 //        edit_text_email = view.findViewById(R.id.email);
 //        edit_text_password = view.findViewById(R.id.password);
@@ -81,7 +81,7 @@ public class RegistrationFragment extends FragmentCallback {
                     return;
                 }
 
-                ApiService apiService = ApiClient.getClient().create(ApiService.class);
+                ApiService apiService = ApiClient.getClientWithoutInterceptor().create(ApiService.class);
 
                 UserRegisterRequest userRegisterRequest = new UserRegisterRequest(
                         "name",
@@ -144,7 +144,7 @@ public class RegistrationFragment extends FragmentCallback {
             }
         });
 
-        return view;
+        return binding.getRoot();
     }
 
     public void setCallBackFragment(CallBackFragment callBackFragment) {
