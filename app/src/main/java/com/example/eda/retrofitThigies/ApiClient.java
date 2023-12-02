@@ -11,6 +11,7 @@ public class ApiClient {
 
     public static final String PICTURES_URL = "http://95.165.91.211:8081/files/";
     private static Retrofit retrofit = null;
+    private static Retrofit retrofitWithoutInterceptor = null;
     private Context context;
 
     public ApiClient(Context context) {
@@ -21,12 +22,23 @@ public class ApiClient {
             .addInterceptor(new AuthInterceptor(BearerTokenManager.getToken()))
             .build();
     public static Retrofit getClient(){
-        if (retrofit == null)
+
+        int i = client.interceptors().size();
+
+        if (retrofit == null || client.interceptors().size() < 1)
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .build();
         return retrofit;
+    }
+    public static Retrofit getClientWithoutInterceptor(){
+        if (retrofitWithoutInterceptor == null)
+            retrofitWithoutInterceptor = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        return retrofitWithoutInterceptor;
     }
 }

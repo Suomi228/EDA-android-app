@@ -48,9 +48,8 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
     RecyclerView.Adapter adapter;
     RecyclerView.Adapter grid_adapter;
 
-    ArrayList<Category> category;
-
-    ArrayList<MenuItemEntity> menuItemEntities;
+    ArrayList<Category> category = new ArrayList<>();
+    ArrayList<MenuItemEntity> menuItemEntities = new ArrayList<>();
 
     GridViewDomain object;
     RecyclerView rec_view_category_list;
@@ -66,6 +65,10 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         binding.recViewMeals.setLayoutManager(linearLayoutManager);
 
+        adapter = new CategoryAdapter(category, MenuFragment.this);
+        binding.recViewMeals.setAdapter(adapter);
+        binding.recViewMeals.addItemDecoration(new MenuItemOffset(20,20));
+
 
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<List<Category>> callCategories = apiService.getCategories();
@@ -75,10 +78,14 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
             public void onResponse(Call<List<Category>> call, retrofit2.Response<List<Category>> response) {
                 if (response.isSuccessful()) {
                     List<Category> categoryList = response.body();
-                    category = new ArrayList<>(categoryList);
-                    adapter = new CategoryAdapter(category, MenuFragment.this);
-                    binding.recViewMeals.setAdapter(adapter);
-                    binding.recViewMeals.addItemDecoration(new MenuItemOffset(20,20));
+                    category.clear();
+                    category.addAll(categoryList);
+                    adapter.notifyDataSetChanged();
+
+
+//                    adapter = new CategoryAdapter(category, MenuFragment.this);
+//                    binding.recViewMeals.setAdapter(adapter);
+//                    binding.recViewMeals.addItemDecoration(new MenuItemOffset(20,20));
                 }
             }
 
@@ -117,6 +124,10 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
 //        grid_category.add(new GridViewDomain("Пицца","category_pizza",150));
 //        grid_category.add(new GridViewDomain("Напитки","category_drinks",35));
 
+        grid_adapter = new GridViewAdapter(menuItemEntities, MenuFragment.this);
+        binding.recViewCategory.setAdapter(grid_adapter);
+        binding.recViewCategory.addItemDecoration(new MenuItemOffset(20,50));
+
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<List<MenuItemEntity>> callMenu = apiService.getFood();
 
@@ -127,10 +138,13 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
                     List<MenuItemEntity> menuItemEntityList = response.body();
                     //menuItemEntityList.sort((MenuItemEntity m1, MenuItemEntity m2) -> m1.getId().compareTo(m2.getId()));
                     //todo сделать сортировку по id
-                    menuItemEntities = new ArrayList<>(menuItemEntityList);
-                    grid_adapter = new GridViewAdapter(menuItemEntities, MenuFragment.this);
-                    binding.recViewCategory.setAdapter(grid_adapter);
-                    binding.recViewCategory.addItemDecoration(new MenuItemOffset(20,100));
+                    menuItemEntities.clear();
+                    menuItemEntities.addAll(menuItemEntityList);
+                    grid_adapter.notifyDataSetChanged();
+                }
+                else {
+                    Toast.makeText(getContext(), "Что-то пошло не так." + response.code(),
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
