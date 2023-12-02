@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 
-import com.example.eda.*;
+import com.example.eda.menuStuff.GridViewDomain;
 import com.google.gson.Gson;
 
 import java.io.File;

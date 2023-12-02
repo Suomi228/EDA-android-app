@@ -8,7 +8,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
-        android:layout_height="350dp"
+        android:layout_height="450dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
@@ -25,15 +25,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/ProductPic"
                 android:layout_width="120dp"
                 android:layout_height="87dp"
                 android:layout_marginStart="100dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -41,13 +40,51 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/category_salads" />
 
+            <TextView
+                android:id="@+id/ProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lora_bold"
+                android:text="Салат"
+                android:textSize="40dp"
+                app:layout_constraintEnd_toEndOf="@+id/ProductPic"
+                app:layout_constraintStart_toStartOf="@+id/ProductPic"
+                app:layout_constraintTop_toBottomOf="@+id/ProductPic" />
+
+
+            <TextView
+                android:id="@+id/ProductFee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="72dp"
+                android:fontFamily="@font/lora_bold"
+                android:text="100"
+                android:textSize="40dp"
+                app:layout_constraintEnd_toEndOf="@+id/ProductName"
+                app:layout_constraintHorizontal_bias="0.509"
+                app:layout_constraintStart_toStartOf="@+id/ProductName"
+                app:layout_constraintTop_toBottomOf="@+id/ProductPic" />
+
+
+            <TextView
+                android:id="@+id/ProductRubles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="87dp"
+                android:fontFamily="@font/lora_bold"
+                android:text="Рублей"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ProductFee"
+                app:layout_constraintTop_toTopOf="@+id/ProductName" />
+
             <ImageView
                 android:id="@+id/minus_btn"
                 android:layout_width="77dp"
                 android:layout_height="49dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="24dp"
 
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="156dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ProductPic"
                 app:srcCompat="@drawable/minus_btn" />
@@ -56,24 +93,23 @@
                 android:id="@+id/plus_btn"
                 android:layout_width="59dp"
                 android:layout_height="53dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginTop="152dp"
+                android:layout_marginEnd="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ProductPic"
                 app:srcCompat="@drawable/plus_btn" />
-
 
             <TextView
                 android:id="@+id/numInCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="144dp"
                 android:layout_marginEnd="14dp"
                 android:fontFamily="@font/lora_bold"
                 android:text="1"
-                android:textSize="50dp"
+                android:textSize="40dp"
                 app:layout_constraintEnd_toStartOf="@+id/plus_btn"
-                app:layout_constraintHorizontal_bias="0.64"
+                app:layout_constraintHorizontal_bias="0.594"
                 app:layout_constraintStart_toEndOf="@+id/minus_btn"
                 app:layout_constraintTop_toBottomOf="@+id/ProductPic" />
 
