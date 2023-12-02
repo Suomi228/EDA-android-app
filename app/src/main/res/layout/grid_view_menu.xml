@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gridLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+
+    <ImageView
+        android:id="@+id/GridPic"
+        android:layout_width="69dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/category_salads" />
+
+    <TextView
+        android:id="@+id/GridName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Салаты"
+        app:layout_constraintEnd_toEndOf="@+id/GridPic"
+        app:layout_constraintStart_toStartOf="@+id/GridPic"
+        app:layout_constraintTop_toBottomOf="@+id/GridPic" />
+    <TextView
+        android:id="@+id/GridFee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="45dp"
+        android:text="100"
+        app:layout_constraintEnd_toEndOf="@+id/GridName"
+        app:layout_constraintStart_toStartOf="@+id/GridName"
+        app:layout_constraintTop_toBottomOf="@+id/GridName" />
+    <TextView
+        android:id="@+id/GridRubles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text=" рублей"
+
+        app:layout_constraintStart_toEndOf="@+id/GridFee"
+        app:layout_constraintTop_toBottomOf="@+id/GridName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
