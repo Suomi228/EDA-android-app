@@ -268,7 +268,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
 
         builder.setView(order_menu);
         AlertDialog dialog = builder.create();
-        dialog.show();
+
 
         plusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -296,7 +296,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                quantityGeneral = 1;
+
                 dialog.dismiss();
             }
         });
@@ -307,7 +307,8 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
 
             }
         });
-
+        quantityGeneral = 1;
+        dialog.show();
 
     }
 
