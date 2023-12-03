@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,7 +52,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
     ArrayList<Category> category = new ArrayList<>();
     ArrayList<MenuItemEntity> menuItemEntities = new ArrayList<>();
 
-    GridViewDomain object;
+    int quantityGeneral = 1;
     RecyclerView rec_view_category_list;
 //    @Override
 //    public void onCreate(Bundle savedInstanceState) {
@@ -206,8 +207,13 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         View order_menu = getLayoutInflater().inflate(R.layout.order_menu, null);
         ImageView productPic = order_menu.findViewById(R.id.ProductPic);
+        ImageView plusBtn = order_menu.findViewById(R.id.plus_btn);
+        ImageView minusBtn = order_menu.findViewById(R.id.minus_btn);
+        Button addToCartBtn = order_menu.findViewById(R.id.add_to_cart_btn);
+        Button closeBtn = order_menu.findViewById(R.id.close_btn);
         TextView productFee = order_menu.findViewById(R.id.ProductFee);
         TextView  productName = order_menu.findViewById(R.id.ProductName);
+        TextView  quantityOfFood = order_menu.findViewById(R.id.quantityOfFood);
 //        String picUrl = "";
 //        switch (position){
 //            case 0:
@@ -263,6 +269,46 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         builder.setView(order_menu);
         AlertDialog dialog = builder.create();
         dialog.show();
+
+        plusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Количество еды определенного вида в корзине
+                quantityGeneral +=1;
+                quantityOfFood.setText(String.valueOf(quantityGeneral));
+                menuItemEntities.get(position).setQuantity(quantityGeneral);
+            }
+        });
+
+        minusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (quantityGeneral > 1) {
+                    quantityGeneral -=1;
+                    quantityOfFood.setText(String.valueOf(quantityGeneral));
+                    menuItemEntities.get(position).setQuantity(quantityGeneral);
+                }
+
+            }
+        });
+
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                quantityGeneral = 1;
+                dialog.dismiss();
+            }
+        });
+
+        addToCartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
     }
 
 //    private void replaceFragment(FragmentCallback fragment, boolean allowReturn) {
