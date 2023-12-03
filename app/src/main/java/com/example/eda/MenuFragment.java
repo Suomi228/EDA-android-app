@@ -39,6 +39,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -79,6 +80,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
             public void onResponse(Call<List<Category>> call, retrofit2.Response<List<Category>> response) {
                 if (response.isSuccessful()) {
                     List<Category> categoryList = response.body();
+                    Collections.sort(categoryList, Comparator.comparingInt(Category::getId));
                     category.clear();
                     category.addAll(categoryList);
                     adapter.notifyDataSetChanged();

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
             replaceFragment(new LoginFragment(), false);
 
 
-        //todo разобраться че не так я отступами контейнера фрагментов
+        //todo разобраться че не так с отступами контейнера фрагментов
         //ViewGroup.LayoutParams params = binding.container.getLayoutParams();
         // binding.container.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
         //params.height = 0;
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
             if (item.getItemId() == R.id.cart_item) {
                 replaceFragment(new CartFragment(), true);
             }
-
             return true;
         });
     }

@@ -1,6 +1,6 @@
 package com.example.eda.retrofitThigies.models;
 
-public class Category {
+public class Category{
     private int id;
     private String category;
 
