@@ -276,9 +276,11 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
             @Override
             public void onClick(View view) {
                 //Количество еды определенного вида в корзине
-                quantityGeneral +=1;
-                quantityOfFood.setText(String.valueOf(quantityGeneral));
-                menuItemEntities.get(position).setQuantity(quantityGeneral);
+                int cunt = menuItemEntities.get(position).getUserQuantity();
+
+                //quantityGeneral +=1;
+                quantityOfFood.setText(String.valueOf(cunt));
+                menuItemEntities.get(position).setUserQuantity(++cunt);
             }
         });
 

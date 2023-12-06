@@ -4,6 +4,7 @@ public class MenuItemEntity{
     private int id;
     private int quantity;
     private double price;
+    private int userQuantity = 0;
     private String name;
     private String pictureUrl;
     private Category categoryEntity;
@@ -63,6 +64,14 @@ public class MenuItemEntity{
 
     public void setCategoryEntity(Category categoryEntity) {
         this.categoryEntity = categoryEntity;
+    }
+
+    public int getUserQuantity() {
+        return userQuantity;
+    }
+
+    public void setUserQuantity(int userQuantity) {
+        this.userQuantity = userQuantity;
     }
 
     @Override
