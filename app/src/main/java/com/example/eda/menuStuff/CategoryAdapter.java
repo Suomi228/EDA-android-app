@@ -35,49 +35,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.category_name.setText(category.get(position).getCategoryName());
-//        String picUrl = "";
-//        switch (position){
-//            case 0:
-//                picUrl = "category_salads";
-//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 1:
-//                picUrl = "category_first_dishes";
-//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 2:
-//                picUrl = "category_second_dishes";
-//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 3:
-//                picUrl = "category_side_dishes";
-//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 4:
-//                picUrl = "category_deserts";
-//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 5:
-//                picUrl = "category_bakery";
-//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 6:
-//                picUrl = "category_pizza";
-//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 7:
-//                picUrl = "category_drinks";
-//                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//
-//        }
 
-        //int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(picUrl, "drawable", holder.itemView.getContext().getPackageName());
         Glide.with(holder.itemView.getContext())
                 .load(ApiClient.PICTURES_URL + "categoriesPng/" +  category.get(position).getCategory() + ".png")
-                //.load("http://95.165.91.211:8081/files/categories/category_drinks.svg")
                 .into(holder.category_picture);
-                //.into(new SvgSoftwareLayerSetter<>(holder.category_picture).getView());
     }
 
     @Override

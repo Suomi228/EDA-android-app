@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/lora_bold"
         android:text="Салаты"
         app:layout_constraintEnd_toEndOf="@+id/GridPic"
         app:layout_constraintStart_toStartOf="@+id/GridPic"
@@ -35,6 +36,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="45dp"
         android:text="100"
+        android:fontFamily="@font/lora_bold"
         app:layout_constraintEnd_toEndOf="@+id/GridName"
         app:layout_constraintStart_toStartOf="@+id/GridName"
         app:layout_constraintTop_toBottomOf="@+id/GridName" />
@@ -43,6 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/lora_bold"
         android:text=" рублей"
 
         app:layout_constraintStart_toEndOf="@+id/GridFee"

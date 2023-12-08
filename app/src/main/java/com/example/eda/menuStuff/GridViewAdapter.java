@@ -37,47 +37,10 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.grid_name.setText(menuItemEntities.get(position).getName());
         holder.GridFee.setText(String.valueOf((int) menuItemEntities.get(position).getPrice()));
-        //        String picUrl = "";
-//        switch (position){
-//            case 0:
-//                picUrl = "category_salads";
-//                holder.gridLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 1:
-//                picUrl = "category_first_dishes";
-//                holder.gridLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 2:
-//                picUrl = "category_second_dishes";
-//                holder.gridLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 3:
-//                picUrl = "category_side_dishes";
-//                holder.gridLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 4:
-//                picUrl = "category_deserts";
-//                holder.gridLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 5:
-//                picUrl = "category_bakery";
-//                holder.gridLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 6:
-//                picUrl = "category_pizza";
-//                holder.gridLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//            case 7:
-//                picUrl = "category_drinks";
-//                holder.gridLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.background_icons));
-//                break;
-//
-//        }
-//        int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(picUrl, "drawable", holder.itemView.getContext().getPackageName());
 
-        //throw new RuntimeException(ApiClient.PICTURES_URL + menuItemEntities.get(position).getCategoryEntity().getCategory() + "/" + menuItemEntities.get(position).getPictureUrl() + ".png");
         Glide.with(holder.itemView.getContext())
-                    .load(ApiClient.PICTURES_URL + menuItemEntities.get(position).getCategoryEntity().getCategory() + "/" + menuItemEntities.get(position).getPictureUrl() + ".png")
+                    .load(ApiClient.PICTURES_URL
+                            + menuItemEntities.get(position).getCategoryEntity().getCategory() + "/" + menuItemEntities.get(position).getPictureUrl() + ".png")
                     .into(holder.grid_picture);
     }
 
