@@ -56,14 +56,19 @@ public class BearerTokenManager {
     public boolean isTokenNotExpired() {
         if (token.length() <= 0)
             return false;
-        Claims claims = Jwts.parser()
-                .setSigningKey(SECRET_KEY)
-                .parseClaimsJws(token)
-                .getBody();
-        Date expDate = new Date(claims.getExpiration().getTime() * 1000);
-        Date now = new Date();
-        if (now.before(expDate)) {
-            return true;
+        try {
+            Claims claims = Jwts.parser()
+                    .setSigningKey(SECRET_KEY)
+                    .parseClaimsJws(token)
+                    .getBody();
+            Date expDate = new Date(claims.getExpiration().getTime() * 1000);
+            Date now = new Date();
+
+            if (now.before(expDate)) {
+                return true;
+            }
+        } catch (Exception e) {
+            return false;
         }
         return false;
     }
