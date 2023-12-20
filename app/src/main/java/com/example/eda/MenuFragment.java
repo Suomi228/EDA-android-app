@@ -47,9 +47,8 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
     ArrayList<Category> category = new ArrayList<>();
     ArrayList<MenuItemEntity> menuItemEntities = new ArrayList<>();
 
-    CartDB cartDB = CartDB.getInstance(getContext());
-
-    CartDao cartDao = cartDB.korzinaDao();
+    CartDB cartDB;
+    CartDao cartDao;
     int quantityGeneral = 1;
     RecyclerView rec_view_category_list;
 //    @Override
@@ -135,6 +134,9 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        cartDB = CartDB.getInstance(getContext());
+        cartDao = cartDB.korzinaDao();
 
         recyclerViewCategoryList();
         recyclerViewAllFood();// Moved from onCreate to onViewCreated

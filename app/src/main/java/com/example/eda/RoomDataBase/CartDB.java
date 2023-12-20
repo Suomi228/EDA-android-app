@@ -16,8 +16,13 @@ public abstract class CartDB extends RoomDatabase {
     public static CartDB getInstance(Context context){
 
         if (INSTANCE == null) {
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), CartDB.class, "CartDB")
-                    .allowMainThreadQueries().build();
+            INSTANCE = Room.databaseBuilder(
+                            context.getApplicationContext(),
+                            CartDB.class,
+                            "CartDB"
+                    )
+                    .allowMainThreadQueries()
+                    .build();
         }
 
         return INSTANCE;
