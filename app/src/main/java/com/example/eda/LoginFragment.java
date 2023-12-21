@@ -95,6 +95,7 @@ public class LoginFragment extends FragmentCallback {
                             if (callBackFragment!=null){
                                 BearerTokenManager bearerTokenManager = new BearerTokenManager(getContext());
                                 bearerTokenManager.saveTokenToPref(response.body().getToken());
+                                bearerTokenManager.getTokenFromPref();
                                 HomeFragment homeFragment = new HomeFragment();
                                 homeFragment.setCallBackFragment(callBackFragment);
                                 callBackFragment.changeFragment(homeFragment, false);
