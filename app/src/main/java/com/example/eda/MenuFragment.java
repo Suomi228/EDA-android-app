@@ -28,6 +28,7 @@ import com.example.eda.menuStuff.MenuItemOffset;
 import com.example.eda.menuStuff.RecyclerViewInterface;
 import com.example.eda.retrofitThigies.ApiClient;
 import com.example.eda.retrofitThigies.ApiService;
+import com.example.eda.retrofitThigies.BearerTokenManager;
 import com.example.eda.retrofitThigies.models.Category;
 import com.example.eda.retrofitThigies.models.MenuItemEntity;
 
@@ -63,7 +64,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
 
 
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
-        Call<List<Category>> callCategories = apiService.getCategories();
+        Call<List<Category>> callCategories = apiService.getCategories(BearerTokenManager.getToken());
 
         callCategories.enqueue(new Callback<List<Category>>() {
             @Override
@@ -98,7 +99,7 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         binding.recViewCategory.addItemDecoration(new MenuItemOffset(20,50));
 
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
-        Call<List<MenuItemEntity>> callMenu = apiService.getFood();
+        Call<List<MenuItemEntity>> callMenu = apiService.getFood(BearerTokenManager.getToken());
 
         callMenu.enqueue(new Callback<List<MenuItemEntity>>() {
             @Override

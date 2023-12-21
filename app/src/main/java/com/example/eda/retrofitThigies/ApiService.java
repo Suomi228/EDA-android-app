@@ -12,6 +12,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface ApiService {
@@ -23,8 +24,8 @@ public interface ApiService {
     Call<UserRegisterOrLoginResponse> loginUser(@Body UserLoginRequest student);
 
     @GET("user/getFood")
-    Call<List<MenuItemEntity>> getFood();
+    Call<List<MenuItemEntity>> getFood(@Header("Authorization") String token);
 
     @GET("orders/getCategories")
-    Call<List<Category>> getCategories();
+    Call<List<Category>> getCategories(@Header("Authorization") String token);
 }

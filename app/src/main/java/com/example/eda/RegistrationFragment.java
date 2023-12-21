@@ -68,7 +68,7 @@ public class RegistrationFragment extends FragmentCallback {
                     return;
                 }
 
-                ApiService apiService = ApiClient.getClientWithoutInterceptor().create(ApiService.class);
+                ApiService apiService = ApiClient.getClient().create(ApiService.class);
 
                 UserRegisterRequest userRegisterRequest = new UserRegisterRequest(
                         "name",

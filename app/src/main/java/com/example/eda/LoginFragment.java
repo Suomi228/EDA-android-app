@@ -82,7 +82,7 @@ public class LoginFragment extends FragmentCallback {
                     return;
                 }
 
-                ApiService apiService = ApiClient.getClientWithoutInterceptor().create(ApiService.class);
+                ApiService apiService = ApiClient.getClient().create(ApiService.class);
                 UserLoginRequest userLoginRequest = new UserLoginRequest(email, password);
                 Call<UserRegisterOrLoginResponse> callLogin = apiService.loginUser(userLoginRequest);
 

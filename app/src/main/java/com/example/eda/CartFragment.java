@@ -46,7 +46,7 @@ public class CartFragment extends FragmentCallback {
             public void onClick(View v) {
 
                 ApiService apiService = ApiClient.getClient().create(ApiService.class);
-                Call<List<MenuItemEntity>> callLogin = apiService.getFood();
+                Call<List<MenuItemEntity>> callLogin = apiService.getFood(BearerTokenManager.getToken());
 
                 callLogin.enqueue(new Callback<List<MenuItemEntity>>() {
                     @Override

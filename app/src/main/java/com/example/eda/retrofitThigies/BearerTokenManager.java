@@ -50,7 +50,7 @@ public class BearerTokenManager {
     }
 
     public static String getToken() {
-        return token;
+        return "Bearer " + token;
     }
 
     public boolean isTokenNotExpired() {
