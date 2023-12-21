@@ -21,9 +21,7 @@ public class HomeFragment extends FragmentCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //callBackFragment.setNavigationVisibility(View.VISIBLE);
         ((MainActivity)getActivity()).setNavigationVisibility(View.VISIBLE);
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
     public void setCallBackFragment(CallBackFragment callBackFragment){

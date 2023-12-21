@@ -32,12 +32,6 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
         } else
             replaceFragment(new LoginFragment(), false);
 
-
-        //todo разобраться че не так с отступами контейнера фрагментов
-        //ViewGroup.LayoutParams params = binding.container.getLayoutParams();
-        // binding.container.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
-        //params.height = 0;
-        // binding.container.setLayoutParams(params);
         binding.bottomNavigationView.setVisibility(View.GONE);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.home_item) {
@@ -58,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
 
     @Override
     public void onBackPressed() {
-        // todo что бы не выходило из приложения АХУЕТ ЭТО КОПАЙЛОТ ДОПИСАЛ НАХУЙ,(НАХУЙ ТОЖЕ ОН)
+
     }
 
     private void replaceFragment(FragmentCallback fragment, boolean allowReturn) {
@@ -76,14 +70,6 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
                 .commit();
     }
 
-//    private void loginFragment() {
-//        LoginFragment fragment = new LoginFragment();
-//        fragment.setCallBackFragment(this);
-//        FragmentManager f1 = getSupportFragmentManager();
-//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        ft.replace(R.id.container, fragment);
-//        ft.commit();
-//    }
 
     private void registrationFragment() {
         FragmentCallback fragment = new LoginFragment();
@@ -98,21 +84,6 @@ public class MainActivity extends AppCompatActivity implements CallBackFragment 
     public void changeFragment(FragmentCallback fragment, boolean allowReturn) {
         replaceFragment(fragment, allowReturn);
     }
-//    @Override
-//    public void changeFragmentCategory(FragmentCallback fragment, boolean allowReturn) {
-//        fragment.setCallBackFragment(this);
-//        if (allowReturn) {
-//            getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.category_container, fragment)
-//                    .addToBackStack(null)
-//                    .commit();
-//        }
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.category_container, fragment)
-//                .commit();
-//    }
 
     @Override
     public void setNavigationVisibility(int state) {

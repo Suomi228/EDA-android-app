@@ -22,21 +22,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class ProfileFragment extends FragmentCallback {
-    FirebaseAuth auth;
-    Button logoutButton;
-    //TextView user_name;
-    FirebaseUser user;
+
     CallBackFragment callBackFragment;
     FragmentProfileBinding binding;
 
     public void onStart() {
         super.onStart();
-//        if (user == null) {
-//            if (callBackFragment != null) {
-//                callBackFragment.changeFragment(new LoginFragment(), true);
-//                callBackFragment.setNavigationVisibility(View.INVISIBLE);
-//            }
-//        }
+
     }
 
     @Override
@@ -54,17 +46,6 @@ public class ProfileFragment extends FragmentCallback {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //auth = FirebaseAuth.getInstance();
-        //user_name = (TextView)getView().findViewById(R.id.user_name);
-        //logoutButton = (Button) getView().findViewById(R.id.logout);
-        //user = auth.getCurrentUser();
-        //if (user == null) {
-        //     if (callBackFragment != null) {
-        //       callBackFragment.changeFragment(new LoginFragment(), true);
-        //    }
-        //} else {
-            //user_name.setText(user.getEmail());
-        //}
 
         binding.logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override

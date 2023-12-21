@@ -22,11 +22,6 @@ import retrofit2.Response;
 
 public class RegistrationFragment extends FragmentCallback {
 
-    //    TextInputEditText edit_text_email, edit_text_password, edit_text_confirm;
-//    Button button_reg;
-    //FirebaseAuth mAuth;
-    //    ProgressBar progress_bar;
-//    TextView text_view;
     CallBackFragment callBackFragment;
 
     FragmentRegistrationBinding binding;
@@ -41,14 +36,6 @@ public class RegistrationFragment extends FragmentCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentRegistrationBinding.inflate(inflater, container, false);
-        //View view = ;
-        //mAuth = FirebaseAuth.getInstance();
-//        edit_text_email = view.findViewById(R.id.email);
-//        edit_text_password = view.findViewById(R.id.password);
-//        button_reg = view.findViewById(R.id.btn_register);
-//        edit_text_confirm = view.findViewById(R.id.password_confirm);
-//        progress_bar = view.findViewById(R.id.progress_bar);
-//        text_view = view.findViewById(R.id.loginNow);
 
         binding.loginNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,35 +99,6 @@ public class RegistrationFragment extends FragmentCallback {
                     }
                 });
 
-//                mAuth.createUserWithEmailAndPassword(email, password)
-//                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                binding.progressBar.setVisibility(View.GONE);
-//                                if (task.isSuccessful()) {
-//                                    mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                        @Override
-//                                        public void onComplete(@NonNull Task<Void> task) {
-//                                            if (task.isSuccessful()){
-//
-//                                                Toast.makeText(getContext(), "Аккаунт создан, пожалуйста подтвердите почту.",
-//                                                        Toast.LENGTH_SHORT).show();
-//                                                if (callBackFragment!=null){
-//                                                    callBackFragment.changeFragment(new LoginFragment(),true);
-//                                                }
-//                                            }
-//                                            else{
-//                                                Toast.makeText(getContext(), "Что-то пошло не так.",
-//                                                        Toast.LENGTH_SHORT).show();
-//                                            }
-//                                        }
-//                                    });
-//                                } else {
-//                                    Toast.makeText(getContext(), "Что-то пошло не так.",
-//                                            Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
             }
         });
 

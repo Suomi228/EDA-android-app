@@ -49,13 +49,7 @@ public class LoginFragment extends FragmentCallback {
     @Override
     public void onStart() {
         super.onStart();
-        //FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if ((currentUser != null) && currentUser.isEmailVerified()) {
-//            if (callBackFragment != null) {
-//                callBackFragment.changeFragment(new HomeFragment(), true);
-//
-//            }
-//        }
+
     }
 
     @Override
@@ -64,13 +58,6 @@ public class LoginFragment extends FragmentCallback {
         binding = FragmentLoginBinding.inflate(inflater,container,false);
         View ContainerView = binding.getRoot();
         dialogForgotBinding = DialogForgotBinding.inflate(inflater, container, false);
-        //mAuth = FirebaseAuth.getInstance();
-        //text_viewRegistretion = ContainerView.findViewById(R.id.registerNow);
-        //edit_text_email = ContainerView.findViewById(R.id.email);
-        //edit_text_password = ContainerView.findViewById(R.id.password);
-        //button_log = ContainerView.findViewById(R.id.btn_login);
-        //progress_bar = ContainerView.findViewById(R.id.progress_bar);
-        //password_forgot = ContainerView.findViewById(R.id.forgot_password);
         binding.registerNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,41 +111,6 @@ public class LoginFragment extends FragmentCallback {
                     }
                 });
 
-
-//                mAuth.signInWithEmailAndPassword(email, password)
-//                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                progress_bar.setVisibility(View.GONE);
-//                                if (task.isSuccessful() && mAuth.getCurrentUser().isEmailVerified()) {
-//                                    Toast.makeText(getContext(), "С возвращением!",
-//                                            Toast.LENGTH_SHORT).show();
-//                                    if (callBackFragment!=null){
-//                                        HomeFragment homeFragment = new HomeFragment();
-////                                      homeFragment.setCallBackFragment(callBackFragment);
-//                                        callBackFragment.changeFragment(homeFragment,true);
-//
-//                                    }
-//
-//                                } else {
-//                                    Toast.makeText(getContext(), "Неверный логин или пароль.",
-//                                            Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-
-                //затычка
-//                binding.progressBar.setVisibility(View.GONE);
-//                if (true) {
-//                    Toast.makeText(getContext(), "С возвращением!",
-//                            Toast.LENGTH_SHORT).show();
-//                    if (callBackFragment != null) {
-//                        HomeFragment homeFragment = new HomeFragment();
-//                        homeFragment.setCallBackFragment(callBackFragment);
-//                        callBackFragment.changeFragment(homeFragment, true);
-//                    }
-//
-//                }
             }
         });
         binding.forgotPassword.setOnClickListener(new View.OnClickListener() {

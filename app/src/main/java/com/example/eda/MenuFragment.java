@@ -50,12 +50,6 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
     CartDB cartDB;
     CartDao cartDao;
     int quantityGeneral = 1;
-    RecyclerView rec_view_category_list;
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        recyclerViewCategoryList();
-//    }
 
 
 
@@ -111,8 +105,6 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
             public void onResponse(Call<List<MenuItemEntity>> call, retrofit2.Response<List<MenuItemEntity>> response) {
                 if (response.isSuccessful()) {
                     List<MenuItemEntity> menuItemEntityList = response.body();
-                    //menuItemEntityList.sort((MenuItemEntity m1, MenuItemEntity m2) -> m1.getId().compareTo(m2.getId()));
-                    //todo сделать сортировку по id
                     menuItemEntities.clear();
                     menuItemEntities.addAll(menuItemEntityList);
                     grid_adapter.notifyDataSetChanged();
@@ -139,14 +131,13 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         cartDao = cartDB.korzinaDao();
 
         recyclerViewCategoryList();
-        recyclerViewAllFood();// Moved from onCreate to onViewCreated
+        recyclerViewAllFood();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMenuBinding.inflate(inflater,container,false);
-        // Inflate the layout for this fragment
         return binding.getRoot();
     }
 
@@ -249,6 +240,5 @@ public class MenuFragment extends FragmentCallback implements RecyclerViewInterf
         dialog.show();
 
     }
-
 
 }
