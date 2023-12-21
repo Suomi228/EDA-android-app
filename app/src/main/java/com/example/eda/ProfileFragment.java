@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.eda.databinding.ActivityMainBinding;
 import com.example.eda.databinding.FragmentProfileBinding;
 import com.example.eda.retrofitThigies.BearerTokenManager;
+import com.example.eda.retrofitThigies.models.UserRegisterRequest;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,6 +26,8 @@ public class ProfileFragment extends FragmentCallback {
 
     CallBackFragment callBackFragment;
     FragmentProfileBinding binding;
+
+    UserRegisterRequest userRegisterRequest;
 
     public void onStart() {
         super.onStart();
@@ -46,6 +49,8 @@ public class ProfileFragment extends FragmentCallback {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        //binding.useremail.setText((CharSequence) userRegisterRequest.getEmail());
 
         binding.logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
